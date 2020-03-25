@@ -1,9 +1,14 @@
+/* CORE CSS-DESIGN FILE FOR THE PROJECT */
+/* Created by Michael D Wu, 2018-2020 */
+
 /* > GLOBAL > */
 
 *{
     margin: 0;
     padding: 0;
 }
+
+/* Fonts for the Project, Mainly are iterations of OpenSans-Light */
 
 @font-face{
     font-family: OpenSans-Light;
@@ -20,11 +25,9 @@
   src: url(../fonts/OpenSans-SemiboldItalic.ttf);
 }
 
-/* @media (min-width: 600px) {} */
 body{
     margin: 0;
     background: #f0f0f0;
-    /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
     font-family: Helvetica, Arial;
     font-weight: lighter;
 }
@@ -127,6 +130,16 @@ h3{
   font-size: 25px;
 }
 
+h4 {
+  text-align: center;
+  color: #444;
+  margin-top: 1.3vh;
+  margin-bottom: 0.6vw;
+  font-family: OpenSans-Light;
+  font-size: 32px;
+}
+
+/* Used for bolding any text */
 #bold{
   font-family: OpenSans-Bold;
 }
@@ -149,14 +162,6 @@ h3{
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-h4 {
-  text-align: center;
-  color: #444;
-  margin-top: 1.3vh;
-  margin-bottom: 0.6vw;
-  font-family: OpenSans-Light;
-  font-size: 32px;
-}
 
 #title-subheading {
   text-align: center;
@@ -228,6 +233,7 @@ h4 {
 }
 
 /* > CAROUSEL SECTION > */
+/* From: https://www.w3schools.com/howto/howto_js_slideshow.asp */
 
 * {box-sizing:border-box}
 
@@ -475,7 +481,7 @@ span{
   font-family: OpenSans-Light;
 }
 
-/* > FOOTPRINT GRAPHIC SECTION > */
+/* > FINAL RESULTS PAGE WITH ENVIRONMENTAL FOOTPRINT OUTPUT > */
 
 .footprint_container{
   width: 100%;
@@ -551,7 +557,7 @@ td {
   font-weight: bold;
 }
 
-/* mobile */
+/* MOBILE RESPONSIVENESS */
 @media screen and (max-width: 480px) and (min-width: 0px) {
   .center {
       color: white;

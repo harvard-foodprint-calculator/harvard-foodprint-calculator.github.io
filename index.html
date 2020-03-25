@@ -1,14 +1,39 @@
 <!--
+    CORE HTML FILE FOR THE PROJECT
+    Created by Michael D Wu, 2018-2020
+
+    Welcome to the main html framework for the calculator! Here's the layout for the file.
+    First, the head page references the 'main.js' Javascript and 'style.css' CSS3 files and sets up the Firebase SDK.
+    Next, the body contains the four question pages and a final results page that displays their 'foodprint'.
+    The body is built on range-sliders adapted from w3 schools.
+
+    TO RUN THE CALCULATOR (this project):
+        1. Locate this folder wherever it is saved, probably in Finder/My Documents
+        2. Click on the index.html file
+            ~~> Should automatically open the html file in Chrome displaying the calculator
+        3. Simply refresh the page whenever you make an update, changes should happen in realtime
+    
+    TO ACCESS THE DATABASE (only if you're Stacy):
+        1. Go to your gmail account
+        2. Search in your inbox for an email titled "Firebase Instructions (Updated)" dated March 24, 2020
+        3. Follow the instructions from the email
+-->
+
+<!--
     Tasks left to do:
         1. Declutter the text on the last page
         2. Potentially Add a line about data privacy on Step 4
         3. Make Step 4 Aesthetically Appear better    
         4. Reach Out to the Crimson
-        5. Upload to GitHub
         6. Send .zip file to Luke
         7. Log 30 hours
-        8. Add Comments to the files
-        9. Add a READ.me file
+        10. Ensure your Firebase Data Rules are safe
+    Done:
+        5. Upload and Connect to GitHub
+        8. Comment and Reorganize Code so that future viewers have an easier time understanding your code
+        9. Creating the README.md file
+        9. Clean up your Firebase Database with all the test submissions you have
+        
 -->
 
 <!DOCTYPE html>
@@ -32,8 +57,10 @@
                 <p id = "big-header">FOODPRINT CALCULATOR</p>
                 <hr>
                 <div id = "titlesubheading-container">
-                    <p id = "small-header">Want to know the environmental impact of your diet?  Take this quick
-                        five minute survey to find your carbon, nitrogen, and water footprints!</p>
+                    <p id = "small-header">
+                        Want to know the environmental impact of your diet?  Take this quick
+                        five minute survey to find your carbon, nitrogen, and water footprints!
+                    </p>
                 </div>
             </center>
         </div>
@@ -45,6 +72,8 @@
         <div class="slideshow-container">
             <!-- Slideshow carousel with number and caption text -->
             <!-- From: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+
+            <!-- NEW PAGE ~~ Step 1 of 4: Meat, Fish, & Eggs Page (the initial landing page) -->
             <div class="mySlides fade">
                 <div class="slide-container">
                     <!-- Subheading with page description and title -->
@@ -87,10 +116,12 @@
                         <span class="range-slider__value">0</span>
                     </div>
                 </div>
+
                 <!-- Only a next button needed, because we do not want the ability for users to go backwards on page 1 -->
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
         
+            <!-- NEW PAGE ~~ Step 2 of 4: Dairy, Fruits, & Vegetables -->
             <div class="mySlides fade">
                 <div class="slide-container">
                     <!-- Subheading with page description and title -->
@@ -133,10 +164,13 @@
                         <span class="range-slider__value">0</span>
                     </div>
                 </div>
+
+                <!-- Previous and Next Buttons to change between the pages -->
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
 
+            <!-- NEW PAGE ~~ Step 3 of 4: Grains, Nuts, & Fats -->
             <div class="mySlides fade">
                 <div class="slide-container">
                     <!-- Subheading with page description and title -->
@@ -176,7 +210,9 @@
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
-        
+            
+            <!-- NEW PAGE ~~ Step 4 of 4: More About You (Optional) -->
+            <!-- SURVEY QUESTIONS: Only one of the first four pages that's different from the rest -->
             <div class="mySlides fade">
                 <div class="slide-container">
                     <!-- Subheading with page description and title -->
@@ -185,6 +221,8 @@
                     <p id = 'title-subheading'>Help researchers at Harvard help the planet by sharing a bit about yourself.</p>
                     -->
                     <div id='random-padding' style = 'padding: 3px;'></div>
+
+                    <!-- Question 1: Gender -->
                     <h2>GENDER</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div class="radio-toolbar">
@@ -204,6 +242,8 @@
                             <input type="radio" value="blank"  name="radio-gender" id="radio-gender-blank"> <span>Prefer Not to Say</span>
                         </label>
                     </div>
+
+                    <!-- Question 2: Age -->
                     <h2>AGE RANGE</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div class="radio-toolbar">
@@ -227,6 +267,9 @@
                             <input type="radio" value="blank"  name="radio-age" id="radio-age-blank"> <span>Prefer Not to Say</span>
                         </label>
                     </div>
+
+                    <!-- Question 3: Ethnicity -->
+                    <!-- Note ~~ this question needs two lines of answers -->
                     <h2>ETHNICITY</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div class="radio-toolbar" style = "padding-bottom: 3px;">
@@ -259,6 +302,9 @@
                             <input type="radio" value="blank"  name="radio-ethnicity" id="radio-ethnicity-blank"> <span>Prefer Not to Say</span>
                         </label>
                     </div>
+
+                    <!-- Question 4: Income -->
+                    <!-- Note ~~ this question needs two lines of answers -->
                     <h2>ANNUAL HOUSEHOLD INCOME</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div class="radio-toolbar" style = "padding-bottom: 3px;">
@@ -287,18 +333,24 @@
                             <input type="radio" value="blank"  name="radio-income" id="radio-income-blank"> <span>Prefer Not to Say</span>
                         </label>
                     </div>
+
+                    <!-- Question 5: Zip Code -->
                     <h2>ZIP CODE</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div id = 'radio-toolbar' style = "padding-bottom: 10px;">
                         <input type="number" name="quantity" id='zipcode' min="1" max="99999" step='1'>
                     </div>
                     
-                    
+                    <!-- Simple Button to submit the calculator's results -->
+                    <!-- There's a JavaScript function that activates when this button is clicked -->
                     <button id = 'submitButton'>Calculate my Foodprint!</button>
                 </div>
+
+                <!-- The user can only go backwards on Step 4 of 4 -->
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             </div>
-
+            
+            <!-- NEW PAGE ~~ Final Results page that gives the user's carbon, nitrogen, and water footprints -->
             <div class = "mySlides fade">
                 <div class="slide-container" style = "width: 100%;">
                     <!-- Subheading with page description and title -->
@@ -335,6 +387,8 @@
                             </td>
                         </tr>
                     </table>
+
+                    <!-- References for the Project -->
                     <div id = 'reference-container' >
                         <p id = 'title-subheading' style = 'text-align: justify; padding-left: 10px;'>
                             Looking for ways to make a change and improve your diet's sustainability?

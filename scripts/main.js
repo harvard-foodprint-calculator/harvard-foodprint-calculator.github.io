@@ -1,23 +1,26 @@
-var annualCF = 0;
-var annualNF = 0;
-var annualWF = 0;
+// CORE JAVASCRIPT FILE (used for functions and interactivity) FOR THE PROJECT
+// Created by Michael D Wu, 2018-2020
 
-
+// -- GLOBAL VARIABLES AND ARRAYS --
 // Array will store user-inputted servings of each individual food item
 // Order is: [beef, chicken, pork, fish, eggs, milk, cheese, fruits, veg, wheat, rice, oil, nuts, beans]
 // Could probably use an ordered dictionary for a bit more clarity here but this suffices
 var foodServings_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var surveyResults_array = [0, 0, 0, 0, 0]
+var annualCF = 0;
+var annualNF = 0;
+var annualWF = 0;
+
+
+// NEXT AND PREVIOUS BUTTON CONTROLS
 
 var slideIndex = 1;
 showSlides(slideIndex);
 
-// Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-// Thumbnail image controls
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
@@ -38,92 +41,7 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
-submitButton.addEventListener("click", function(){
-  // Your web app's Firebase configuration
-  firebase.initializeApp({
-    apiKey: "AIzaSyBsPuGniKm5JN2AOoxtS_dMhkV3qoyx0wE",
-    authDomain: "foodprint-calculator.firebaseapp.com",
-    databaseURL: "https://foodprint-calculator.firebaseio.com",
-    projectId: "foodprint-calculator",
-    storageBucket: "",
-    messagingSenderId: "911716885067",
-    appId: "1:911716885067:web:90a30a6d8cff68931c63ce"
-  });
-  var firestore = firebase.firestore();
-  var db = firebase.firestore();
-
-  // Generating a random ID
-  // https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-  // dec2hex :: Integer -> String
-  // i.e. 0-255 -> '00'-'ff'
-  function dec2hex (dec) {
-    return ('0' + dec.toString(16)).substr(-2)
-  }
-
-  // generateId :: Integer -> String
-  function generateId (len) {
-    var arr = new Uint8Array((len || 40) / 2)
-    window.crypto.getRandomValues(arr)
-    return Array.from(arr, dec2hex).join('')
-  }
-
-  var id = generateId();
-
-  updateRadioValue();
-
-  return db.collection("UserData").doc(id).set({
-    footprint_Carbon: annualCF.toString() + 'kg',
-    footprint_Nitrogen: annualNF.toString() + 'g',
-    footprint_Water: annualWF.toString() + 'L',
-    servings_beef: foodServings_array[0].toString(),
-    servings_chicken: foodServings_array[1].toString(),
-    servings_pork: foodServings_array[2].toString(),
-    servings_fish: foodServings_array[3].toString(),
-    servings_eggs: foodServings_array[4].toString(),
-    servings_milk: foodServings_array[5].toString(),
-    servings_cheese: foodServings_array[6].toString(),
-    servings_fruit: foodServings_array[7].toString(),
-    servings_vegetables: foodServings_array[8].toString(),
-    servings_wheat: foodServings_array[9].toString(),
-    servings_rice: foodServings_array[10].toString(),
-    servings_oil: foodServings_array[11].toString(),
-    servings_nuts: foodServings_array[12].toString(),
-    servings_beans: foodServings_array[13].toString(),
-    user_gender: surveyResults_array[0].toString(),
-    user_age: surveyResults_array[1].toString(),
-    user_ethnicity: surveyResults_array[2].toString(),
-    user_income: surveyResults_array[3].toString(),
-    user_zipcode: surveyResults_array[4].toString(),
-  })
-  .then(function() {
-    console.log("Document successfully written!");
-    plusSlides(1);
-  })
-  .catch(function(error) {
-    console.log("Error writing document: ", error);
-  });
-});
-
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-function showCarbon(){
-  document.getElementById("carbon-description").innerHTML = "<p id = 'bold'>Your annual contribution to climate change:</p>" + numberWithCommas(Math.round(annualCF/8.7))
-  + " gallons of gasoline burned or " + numberWithCommas(Math.round(annualCF * 0.0165)) + " square feet of ice melted every year.<sup>2,3</sup>"
-  + " Meat and dairy account for three-fourths of all carbon emissions from an average American diet.<sup>4</sup>"
-}
-
-function showNitrogen(){
-  document.getElementById("nitrogen-description").innerHTML = "<p id = 'bold'>Your annual contribution to nutrient pollution:</p>" + numberWithCommas(Math.round(annualNF/1000*298)) + 
-  "kg of additional carbon, " + numberWithCommas(Math.round(annualNF/1000*298/8.7)) + " gallons of gasoline burned, or " + numberWithCommas(Math.round(annualNF*10/453.59)) + " pounds of fertilizer polluted every year.<sup>1,2</sup>"
-}
-
-function showWater(){
-  document.getElementById("water-description").innerHTML = "<p id = 'bold'>Your annual consumption of limited freshwater resources:</p> " + numberWithCommas(Math.round(annualWF/35*0.264172)) +
-  " bathtubs of water every year or "
-   + numberWithCommas(Math.round(annualWF/35*0.264172/365)) + " bathtubs of water every day.<sup>5</sup> Beef, cheese, and pork are the three highest sources of water use in food production.<sup>1</sup>"
-}
+// -- UPDATING THE RADIO VALUES SO THAT WE CAN INPUT USER SLIDE RESULTS INTO FIREBASE --
 
 function updateRadioValue() { 
   var ele = document.getElementsByName('radio-gender'); 
@@ -157,9 +75,104 @@ function updateRadioValue() {
   surveyResults_array[4] = document.getElementById('zipcode').value; 
 } 
 
-// Function will update the TWO things
+// -- FINAL SUBMIT BUTTON ON STEP 4 OF 4 --
+// AddEventListener to "listen" for clicks on the calculate button
+
+submitButton.addEventListener("click", function(){
+  // Connecting the Firebase Database with Our app
+  firebase.initializeApp({
+    apiKey: "AIzaSyBsPuGniKm5JN2AOoxtS_dMhkV3qoyx0wE",
+    authDomain: "foodprint-calculator.firebaseapp.com",
+    databaseURL: "https://foodprint-calculator.firebaseio.com",
+    projectId: "foodprint-calculator",
+    storageBucket: "",
+    messagingSenderId: "911716885067",
+    appId: "1:911716885067:web:90a30a6d8cff68931c63ce"
+  });
+  var firestore = firebase.firestore();
+  var db = firebase.firestore();
+
+  // Generating a random ID
+  // https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+  // dec2hex :: Integer -> String
+  // i.e. 0-255 -> '00'-'ff'
+  function dec2hex (dec) {
+    return ('0' + dec.toString(16)).substr(-2)
+  }
+
+  // generateId :: Integer -> String
+  function generateId (len) {
+    var arr = new Uint8Array((len || 40) / 2)
+    window.crypto.getRandomValues(arr)
+    return Array.from(arr, dec2hex).join('')
+  }
+
+  var id = generateId();
+
+  // Calling function to update the entries in foodServings_array
+  updateRadioValue();
+
+  // Setting the values received from the user into the Firebase Database 
+  return db.collection("UserData").doc(id).set({
+    footprint_Carbon: annualCF.toString() + 'kg',
+    footprint_Nitrogen: annualNF.toString() + 'g',
+    footprint_Water: annualWF.toString() + 'L',
+    servings_beef: foodServings_array[0].toString(),
+    servings_chicken: foodServings_array[1].toString(),
+    servings_pork: foodServings_array[2].toString(),
+    servings_fish: foodServings_array[3].toString(),
+    servings_eggs: foodServings_array[4].toString(),
+    servings_milk: foodServings_array[5].toString(),
+    servings_cheese: foodServings_array[6].toString(),
+    servings_fruit: foodServings_array[7].toString(),
+    servings_vegetables: foodServings_array[8].toString(),
+    servings_wheat: foodServings_array[9].toString(),
+    servings_rice: foodServings_array[10].toString(),
+    servings_oil: foodServings_array[11].toString(),
+    servings_nuts: foodServings_array[12].toString(),
+    servings_beans: foodServings_array[13].toString(),
+    user_gender: surveyResults_array[0].toString(),
+    user_age: surveyResults_array[1].toString(),
+    user_ethnicity: surveyResults_array[2].toString(),
+    user_income: surveyResults_array[3].toString(),
+    user_zipcode: surveyResults_array[4].toString(),
+  })
+  .then(function() {
+    console.log("Document successfully written!");
+    plusSlides(1);
+  })
+  .catch(function(error) {
+    console.log("Error writing document: ", error);
+  });
+});
+
+// -- UPDATING THE THREE ENVIRONMENTAL FOODPRINT DESCRIPTORS --
+
+function showCarbon(){
+  document.getElementById("carbon-description").innerHTML = "<p id = 'bold'>Your annual contribution to climate change:</p>" + numberWithCommas(Math.round(annualCF/8.7))
+  + " gallons of gasoline burned or " + numberWithCommas(Math.round(annualCF * 0.0165)) + " square feet of ice melted every year.<sup>2,3</sup>"
+  + " Meat and dairy account for three-fourths of all carbon emissions from an average American diet.<sup>4</sup>"
+}
+
+function showNitrogen(){
+  document.getElementById("nitrogen-description").innerHTML = "<p id = 'bold'>Your annual contribution to nutrient pollution:</p>" + numberWithCommas(Math.round(annualNF/1000*298)) + 
+  "kg of additional carbon, " + numberWithCommas(Math.round(annualNF/1000*298/8.7)) + " gallons of gasoline burned, or " + numberWithCommas(Math.round(annualNF*10/453.59)) + " pounds of fertilizer polluted every year.<sup>1,2</sup>"
+}
+
+function showWater(){
+  document.getElementById("water-description").innerHTML = "<p id = 'bold'>Your annual consumption of limited freshwater resources:</p> " + numberWithCommas(Math.round(annualWF/35*0.264172)) +
+  " bathtubs of water every year or "
+   + numberWithCommas(Math.round(annualWF/35*0.264172/365)) + " bathtubs of water every day.<sup>5</sup> Beef, cheese, and pork are the three highest sources of water use in food production.<sup>1</sup>"
+}
+
+// Basic function for formatting a number with commas, Standard regex probably from StackOverflow
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// -- UPDATING THE THREE ENVIRONMENTAL FOODPRINT RESULTS/VALUES --
+
 // FIRST: the right-hand labels of the sliders based on user-inputted values on the slider
-// SECOND: the user's annual C/N/H2O footprints in the labels at the bottom of the calculator
 var rangeSlider = function(){
   
   // Storing each trait/class of the slider in a variable
@@ -182,7 +195,6 @@ var rangeSlider = function(){
     });
 
   });
-
 
   // Storing the user-inputted servings of the individual food groups into 'foodServings_array'
   beef.on('input', function(){foodServings_array[0] = document.getElementById("beef").value;});
