@@ -1,0 +1,372 @@
+<!--
+    Tasks left to do:
+        1. Declutter the text on the last page
+        2. Potentially Add a line about data privacy on Step 4
+        3. Make Step 4 Aesthetically Appear better    
+        4. Reach Out to the Crimson
+        5. Upload to GitHub
+        6. Send .zip file to Luke
+        7. Log 30 hours
+        8. Add Comments to the files
+        9. Add a READ.me file
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Foodprint Calculator</title>
+    <script src = "./scripts/main.js"></script>
+    <link rel = "stylesheet" type = "text/css" href = "./styles/style.css?version=86" />
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <!-- The top showcase banner with image and text -->
+    <header id = "showcase">
+        <div class="center">
+            <center>
+                <p id = "big-header">FOODPRINT CALCULATOR</p>
+                <hr>
+                <div id = "titlesubheading-container">
+                    <p id = "small-header">Want to know the environmental impact of your diet?  Take this quick
+                        five minute survey to find your carbon, nitrogen, and water footprints!</p>
+                </div>
+            </center>
+        </div>
+    </header>
+
+    <!-- Contains the bulk of the calculator, encapsulates the survey questions and final result -->
+    <div id="slider-container">
+    <center>
+        <div class="slideshow-container">
+            <!-- Slideshow carousel with number and caption text -->
+            <!-- From: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+            <div class="mySlides fade">
+                <div class="slide-container">
+                    <!-- Subheading with page description and title -->
+                    <h4 id='step-title'>Step 1 of 4: Meat, Fish, & Eggs</h4>
+                    <p id = 'title-subheading'>How many servings of each food do you consume on an average day?</p>
+                    <p id = 'title-subheading'>Not sure what a standard portion size is? Click
+                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png">here</a>
+                        to find out more.</p>
+                    <div id = 'post-subtitle-spacing'></div>
+                    
+                    <!-- Start of survey questions and range sliders -->
+                    <h2>Beef</h2>
+                    <p id = 'serving-size'>(3 oz / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="beef" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Chicken</h2>
+                    <p id = 'serving-size'>(3 oz / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="chicken" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Pork</h2>
+                    <p id = 'serving-size'>(3 oz / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="pork" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Fish & Seafood</h2>
+                    <p id = 'serving-size'>(3.5 oz / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="fish" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Eggs</h2>
+                    <p id = 'serving-size'>(1 egg or 2 oz / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="eggs" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                </div>
+                <!-- Only a next button needed, because we do not want the ability for users to go backwards on page 1 -->
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        
+            <div class="mySlides fade">
+                <div class="slide-container">
+                    <!-- Subheading with page description and title -->
+                    <h4 id='step-title'>Step 2 of 4: Dairy, Fruits, & Vegetables</h4>
+                    <p id = 'title-subheading'>How many servings of each food do you consume on an average day?</p>
+                    <p id = 'title-subheading'>Not sure what a standard portion size is? Click
+                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png">here</a>
+                        to find out more.</p>
+                    <div id = 'post-subtitle-spacing'></div>
+                    
+                    <!-- Start of survey questions and range sliders -->
+                    <h2>Milk & Yogurt</h2>
+                    <p id = 'serving-size'>(1 cup / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="milk" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Cheese</h2>
+                    <p id = 'serving-size'>(2 oz/ serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="cheese" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Beans & Legumes</h2>
+                    <p id = 'serving-size'>(0.5 cup cooked / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="beans" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Fruits</h2>
+                    <p id = 'serving-size'>(1 apple or 5 oz / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="fruits" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Vegetables</h2>
+                    <p id = 'serving-size'>(1 cup / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="vegetables" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="slide-container">
+                    <!-- Subheading with page description and title -->
+                    <h4 id='step-title'>Step 3 of 4: Grains, Nuts, & Fats</h4>
+                    <p id = 'title-subheading'>How many servings of each food do you consume on an average day?</p>
+                    <p id = 'title-subheading'>Not sure what a standard portion size is? Click
+                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png">here</a>
+                        to find out more.</p>
+                    <div id = 'post-subtitle-spacing-3'></div>
+
+                    <!-- Start of survey questions and range sliders -->
+                    <h2>Wheat & Other Grains</h2>
+                    <p id = 'serving-size'>(1 slice bread, 1/2 cup oatmeal / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="wheat" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Rice</h2>
+                    <p id = 'serving-size'>(0.5 cup cooked / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="rice" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Added Fats & Oil</h2>
+                    <p id = 'serving-size'>(1 tbsp / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="oil" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                    <h2>Nuts & Seeds</h2>
+                    <p id = 'serving-size'>(0.25 cup / serving)</p>
+                    <div class="range-slider">
+                        <input class="range-slider__range" id="nuts" type="range" value="0" min="0" max="8" step="0.5">
+                        <span class="range-slider__value">0</span>
+                    </div>
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        
+            <div class="mySlides fade">
+                <div class="slide-container">
+                    <!-- Subheading with page description and title -->
+                    <h4 id='step-title'>Step 4 of 4: More About You (Optional)</h4>
+                    <!-- I don't think this next step is absolutely necessary that we ask, so it's probably best we leave this out.
+                    <p id = 'title-subheading'>Help researchers at Harvard help the planet by sharing a bit about yourself.</p>
+                    -->
+                    <div id='random-padding' style = 'padding: 3px;'></div>
+                    <h2>GENDER</h2>
+                    <div id = 'post-subtitle-spacing-2'></div>
+                    <div class="radio-toolbar">
+                        <label for="radio-male">
+                            <input type="radio" value="male" name="radio-gender" id="radio-male" checked> <span>Male</span>
+                        </label>
+                    
+                        <label for="radio-female">
+                            <input type="radio" value="female" name="radio-gender" id="radio-female"> <span>Female</span>
+                        </label>
+                    
+                        <label for="radio-other">
+                            <input type="radio" value="other"  name="radio-gender" id="radio-other"> <span>Other</span>
+                        </label>
+
+                        <label for="radio-gender-blank">
+                            <input type="radio" value="blank"  name="radio-gender" id="radio-gender-blank"> <span>Prefer Not to Say</span>
+                        </label>
+                    </div>
+                    <h2>AGE RANGE</h2>
+                    <div id = 'post-subtitle-spacing-2'></div>
+                    <div class="radio-toolbar">
+                        <label for="radio-0-20">
+                            <input type="radio" value="0-20" name="radio-age" id="radio-0-20" checked> <span>0-20</span>
+                        </label>
+                    
+                        <label for="radio-21-40">
+                            <input type="radio" value="21-40" name="radio-age" id="radio-21-40"> <span>21-40</span>
+                        </label>
+                    
+                        <label for="radio-41-60">
+                            <input type="radio" value="41-60"  name="radio-age" id="radio-41-60"> <span>41-60</span>
+                        </label>
+
+                        <label for="radio-60+">
+                            <input type="radio" value="60+"  name="radio-age" id="radio-60+"> <span>60+</span>
+                        </label>
+
+                        <label for="radio-age-blank">
+                            <input type="radio" value="blank"  name="radio-age" id="radio-age-blank"> <span>Prefer Not to Say</span>
+                        </label>
+                    </div>
+                    <h2>ETHNICITY</h2>
+                    <div id = 'post-subtitle-spacing-2'></div>
+                    <div class="radio-toolbar" style = "padding-bottom: 3px;">
+                        <label for="radio-white">
+                            <input type="radio" value="white" name="radio-ethnicity" id="radio-white" checked> <span>White</span>
+                        </label>
+                    
+                        <label for="radio-black">
+                            <input type="radio" value="black" name="radio-ethnicity" id="radio-black"> <span>African American</span>
+                        </label>
+                    
+                        <label for="radio-hispanic">
+                            <input type="radio" value="hispanic"  name="radio-ethnicity" id="radio-hispanic"> <span>Hispanic</span>
+                        </label>
+
+                        <label for="radio-asian">
+                            <input type="radio" value="asian"  name="radio-ethnicity" id="radio-asian"> <span>Asian</span>
+                        </label>
+                    </div>
+                    <div class='radio-toolbar'>
+                        <label for="radio-native">
+                            <input type="radio" value="native american"  name="radio-ethnicity" id="radio-native"> <span>Native American</span>
+                        </label>
+
+                        <label for="radio-other">
+                            <input type="radio" value="other"  name="radio-ethnicity" id="radio-other"> <span>Other</span>
+                        </label>
+
+                        <label for="radio-ethnicity-blank">
+                            <input type="radio" value="blank"  name="radio-ethnicity" id="radio-ethnicity-blank"> <span>Prefer Not to Say</span>
+                        </label>
+                    </div>
+                    <h2>ANNUAL HOUSEHOLD INCOME</h2>
+                    <div id = 'post-subtitle-spacing-2'></div>
+                    <div class="radio-toolbar" style = "padding-bottom: 3px;">
+                        <label for="radio-0-40">
+                            <input type="radio" value="$0-$40K" name="radio-income" id="radio-0-40" checked> <span>$0-$40,000</span>
+                        </label>
+                    
+                        <label for="radio-40-80">
+                            <input type="radio" value="$40-$80K" name="radio-income" id="radio-40-80"> <span>$40,000-$80,000</span>
+                        </label>
+                    
+                        <label for="radio-80-160">
+                            <input type="radio" value="$80-$160K"  name="radio-income" id="radio-80-160"> <span> $80,000-$160,000</span>
+                        </label>
+                    </div>
+                    <div class = 'radio-toolbar' style = "padding-bottom: 15px;">
+                        <label for="radio-160-320">
+                            <input type="radio" value="$160K-$320K"  name="radio-income" id="radio-160-320"> <span>$160,000-$320,000</span>
+                        </label>
+
+                        <label for="radio-320+">
+                            <input type="radio" value="$320K+"  name="radio-income" id="radio-320+"> <span>$320,000+</span>
+                        </label>
+
+                        <label for="radio-income-blank">
+                            <input type="radio" value="blank"  name="radio-income" id="radio-income-blank"> <span>Prefer Not to Say</span>
+                        </label>
+                    </div>
+                    <h2>ZIP CODE</h2>
+                    <div id = 'post-subtitle-spacing-2'></div>
+                    <div id = 'radio-toolbar' style = "padding-bottom: 10px;">
+                        <input type="number" name="quantity" id='zipcode' min="1" max="99999" step='1'>
+                    </div>
+                    
+                    
+                    <button id = 'submitButton'>Calculate my Foodprint!</button>
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            </div>
+
+            <div class = "mySlides fade">
+                <div class="slide-container" style = "width: 100%;">
+                    <!-- Subheading with page description and title -->
+                    <h4 class = 'final-title' id='step-title'>Your Diet's Annual Environmental Impact<sup style = 'font-size: 20px;'>1</sup></h4>
+                    <p id = 'title-subheading'>What you choose to eat has arguably the largest impact on your individual environmental footprint! </p>
+                    
+                    <!-- Start of table displaying the user's individual environmental footprint report -->
+                    <table class = 'table' style="width:100%">
+                        <tr class = 'row'>
+                            <td class = 'column1'>
+                                <center><p class = "footprint" id = "carbonKG" style = 'padding-top: 20px;'>0 kg</p></center>
+                                <p class = 'footprint_text'>Carbon</p>
+                            </td>
+                            <td class = 'column2'>
+                                <p class = 'footprinttext_description' id = "carbon-description">0kg is equivalent to 0 gallons of gasoline burned.</p>
+                            </td>
+                        </tr>
+                        <tr class = 'row'>
+                            <td class = 'column1'>
+                                <center><p class = "footprint" id = "nitrogenG" style = 'padding-top: 5px;'>0 g</p></center>
+                                <p class = 'footprint_text'>Nitrogen</p>
+                            </td>
+                            <td class = 'column2'>
+                                <p class = 'footprinttext_description' id = "nitrogen-description">0g is equivalent to 0 gallons of gasoline burned.</p>
+                            </td>
+                        </tr>
+                        <tr class = 'row'>
+                            <td class = 'column1'>
+                                <center><p class = "footprint" id = "waterL" style = 'padding-top: 20px;'>0 L</p></center>
+                                <p class = 'footprint_text'>Water</p>
+                            </td>
+                            <td class = 'column2'>
+                                <p class = 'footprinttext_description' id = "water-description">0L is equivalent to 0 bathtubs used</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id = 'reference-container' >
+                        <p id = 'title-subheading' style = 'text-align: justify; padding-left: 10px;'>
+                            Looking for ways to make a change and improve your diet's sustainability?
+                            Check out <a href = 'https://www.hsph.harvard.edu/nutritionsource/sustainability/plate-and-planet/'>these recommendations</a>
+                            from the Harvard T.H. Chan School of Public Health on consuming a healthy and Earth-friendly diet.</p>
+                    
+                        <p id = 'references-title'>References</p>
+                        <p id = 'references'>1. Leach, Allison M., Kyle A. Emery, Jessica Gephart, Kyle F. Davis, Jan Willem Erisman, Adrian Leip, Michael L. Pace, et al. “Environmental Impact Food Labels Combining Carbon, Nitrogen, and Water Footprints.” <i>Food Policy</i> 61 (2016): 213–23. https://doi.org/10.1016/j.foodpol.2016.03.006. </p>
+                        <p id = 'references'>2. Rohrer, Jürg. “What Is a Carbon Footprint - Definition of Carbon Footprint.” Time for Change. https://timeforchange.org/what-is-a-carbon-footprint-definition/. </p>
+                        <p id = 'references'>3. Shapiro, Ari. “With An Eye Toward Lower Emissions, Clean Air Travel Gets Off The Ground.” NPR. NPR, July 29, 2019. https://www.npr.org/2019/07/29/746275123/with-an-eye-toward-lower-emissions-clean-air-travel-gets-off-the-ground.</p>
+                        <p id = 'references'>4. “Carbon Footprint Factsheet.” Carbon Footprint Factsheet | Center for Sustainable Systems. http://css.umich.edu/factsheets/carbon-footprint-factsheet.</p>
+                        <p id = 'references'>5. “Saving Water in the Shower and Bathtub.” Water Footprint Calculator, December 7, 2018. https://www.watercalculator.org/save-water/shower-bath/.</p>
+                    </div i>
+                </div>
+            </div>
+        </div>
+        <br>
+    </center>
+    </div>
+    
+    <!--# The indicator dots/circles are located at the bottom of the screen -->
+    <div id = 'dots-container'>
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span> 
+        </div>
+    </div>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src = "./scripts/main.js"></script>
+
+</body>
+</html>

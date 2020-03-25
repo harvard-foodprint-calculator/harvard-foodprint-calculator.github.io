@@ -1,0 +1,22 @@
+[debug] [2019-09-23T19:19:25.597Z] ----------------------------------------------------------------------
+[debug] [2019-09-23T19:19:25.601Z] Command:       /usr/local/Cellar/node/12.8.0/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2019-09-23T19:19:25.601Z] CLI Version:   7.3.2
+[debug] [2019-09-23T19:19:25.601Z] Platform:      darwin
+[debug] [2019-09-23T19:19:25.601Z] Node Version:  v12.8.0
+[debug] [2019-09-23T19:19:25.603Z] Time:          Mon Sep 23 2019 15:19:25 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-09-23T19:19:25.603Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-09-23T19:19:25.626Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-09-23T19:19:25.627Z] > authorizing via signed-in user
+[debug] [2019-09-23T19:19:25.627Z] [iam] checking project foodprint-calculator for permissions ["firebase.projects.get"]
+[debug] [2019-09-23T19:19:25.629Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/foodprint-calculator:testIamPermissions  
+
+[debug] [2019-09-23T19:19:25.882Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-23T19:19:25.885Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/foodprint-calculator  
+ 
+[debug] [2019-09-23T19:19:26.090Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-23T19:19:26.092Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/foodprint-calculator/webApps/-/config  
+ 
+[debug] [2019-09-23T19:19:26.389Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
