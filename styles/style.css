@@ -177,7 +177,7 @@ h4 {
 }
 
 #post-subtitle-spacing-2{
-  padding-bottom: 0.65vh;
+  padding-bottom: 3px;
 }
 
 #post-subtitle-spacing-3{
@@ -195,17 +195,49 @@ h4 {
 }
 
 #references {
-  font-size: 10px;
+  font-size: 15px;
   text-align: left;
   color: rgb(34, 34, 34);
-  padding-bottom: 0.3vw;
+  padding-bottom: 0.8vw;
   padding-top: 0vw;
   padding-left: 10px;
   font-family: OpenSans-Light;
 }
 
+#referencesButtonBack{
+  margin-top: 60px;;
+  border-radius: 6px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 38px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
+}
+
+#referencesButton{
+  margin-top: 60px;;
+  border-radius: 6px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16.5px;
+  padding: 8px 32px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
+}
+
 #reference-container{
-  width: 85%;
+  width: 80%;
+}
+
+#text-reference-container{
+  width: 80%;
 }
 
 #serving-size{
@@ -219,7 +251,7 @@ h4 {
 }
 
 #submitButton{
-  margin-top: 30px;
+  margin-top: 20px;
   border-radius: 6px;
   background-color: #2c3e50;
   color: white;
@@ -425,7 +457,7 @@ input::-moz-focus-outer {
 
 .radio-toolbar {
   margin: 5px;
-  padding-bottom: 21px;
+  padding-bottom: 20px;
 }
 
 #padding2{
@@ -519,8 +551,10 @@ span{
 
 .table {
   padding: 0.2vh;
+  margin-top: 30px;
+  margin-bottom: 0px;
   display: table;
-  width: 100%;
+  width: 60%;
   table-layout: fixed;
 }
 
@@ -542,12 +576,14 @@ td {
 }
 
 .footprinttext_description {
+  text-align: justify;
   font-size: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
   color: #444;
   font-family: OpenSans-Light;
-  font-size: 15px;
+  font-size: 16.5px;
+  line-height: 1.5;
   font-weight: bold;
 }
 
@@ -585,6 +621,14 @@ td {
     text-align-last: center;
   }
 
+  h2{
+    font-size: 14px;
+  }
+
+  #food{
+    margin-top: 16px;
+  }
+
   h3{
     text-align: justify;
     -moz-text-align-last: center;
@@ -592,6 +636,19 @@ td {
     margin-top: 5px;
     padding-bottom: 5px;
     font-size: 20px;
+  }
+
+  h4 {
+    text-align: center;
+    color: #444;
+    margin-top: 1.3vh;
+    margin-bottom: 10px;
+    font-family: OpenSans-Light;
+    font-size: 25px;
+  }
+
+  span{
+    font-size: 12px;
   }
 
   #slider-container {
@@ -606,10 +663,12 @@ td {
   /* Position the "next button" to the right */
   .next {
     right: -10%;
+    top: 60%;
   }
 
   .prev {
     left: -10%;
+    top: 60%;
   }
 
   .footprint_text{
@@ -643,6 +702,7 @@ td {
 
   .table {
     padding: 0vh;
+    width: 100%;
   }
 
   .column2{
@@ -651,11 +711,49 @@ td {
   }
 
   #reference-container{
-    width: 100%;
+    width: 95%;
+  }
+  
+  #text-reference-container{
+    width: 95%;
   }
 
-  #references, #references-title{
-    font-size: 0px;
+  #references {
+    font-size: 10px;
+    text-align: left;
+    color: rgb(34, 34, 34);
+    padding-bottom: 8px;
+    padding-top: 0vw;
+    padding-left: 0px;
+    font-family: OpenSans-Light;
+  }
+
+  #referencesButtonBack{
+    margin-top: 30px;
+    border-radius: 6px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 8px 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
+  }
+  
+  #referencesButton{
+    margin-top: 30px;
+    border-radius: 6px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 8px 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
   }
 
 }

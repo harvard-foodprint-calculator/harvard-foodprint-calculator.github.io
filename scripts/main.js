@@ -7,8 +7,7 @@
 // Could probably use an ordered dictionary for a bit more clarity here but this suffices
 var foodServings_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 // Array with asking for Zip Code
-// var surveyResults_array = [0, 0, 0, 0, 0]
-var surveyResults_array = [0, 0, 0, 0]
+var surveyResults_array = [0, 0, 0, 0, 0]
 var annualCF = 0;
 var annualNF = 0;
 var annualWF = 0;
@@ -74,7 +73,18 @@ function updateRadioValue() {
       surveyResults_array[3] = ele[i].value; 
   } 
 
-  // surveyResults_array[4] = document.getElementById('zipcode').value; 
+  // surveyResults_array[4] = document.getElementById('radio-country').value; 
+  var ele = document.getElementById("radio-country");
+  var country = ele.options[ele.selectedIndex].value;
+  // Need to exclude respondents from the European Union, wipe any survey results they have
+  if(country == "European Union") {
+    country = "blank";
+    surveyResults_array[0] = "blank";
+    surveyResults_array[1] = "blank";
+    surveyResults_array[2] = "blank";
+    surveyResults_array[3] = "blank";
+  }
+  surveyResults_array[4] = country;
 } 
 
 // -- FINAL SUBMIT BUTTON ON STEP 4 OF 4 --
@@ -137,7 +147,7 @@ submitButton.addEventListener("click", function(){
     user_age: surveyResults_array[1].toString(),
     user_ethnicity: surveyResults_array[2].toString(),
     user_income: surveyResults_array[3].toString(),
-    // user_zipcode: surveyResults_array[4].toString(),
+    user_country: surveyResults_array[4].toString(),
   })
   .then(function() {
     console.log("Document successfully written!");
@@ -150,22 +160,52 @@ submitButton.addEventListener("click", function(){
 
 // -- UPDATING THE THREE ENVIRONMENTAL FOODPRINT DESCRIPTORS --
 
-function showCarbon(){
-  document.getElementById("carbon-description").innerHTML = "<p id = 'bold'>Your annual contribution to climate change:</p>" + numberWithCommas(Math.round(annualCF/8.7))
-  + " gallons of gasoline burned or " + numberWithCommas(Math.round(annualCF * 0.0165)) + " square feet of ice melted every year.<sup>2,3</sup>"
-  + " Meat and dairy account for three-fourths of all carbon emissions from an average American diet.<sup>4</sup>"
+function showEnvironmentAverageText(){
+  var national_metric; var needed_metric;
+
+  if (annualCF < 680){
+    national_metric = "below"; needed_metric = "and also below";
+  } else if (annualCF < 1750 && annualCF >=680){
+    national_metric = "below"; needed_metric = "but above";
+  } else if (annualCF < 2250 && annualCF >=1750){
+    national_metric = "above"; needed_metric = "and far above";
+  } else {
+    national_metric = "far above"; needed_metric = "and also far above";
+  }
+
+  document.getElementById("environ-average-description").innerHTML =
+  annualCF + "kg of Carbon is " + national_metric + " the US national per capita average of 1750kg carbon emissions every year<sup>2</sup> "
+  + needed_metric + " the 680kg maximum upper limit of a sustainable diet necesary to prevent climate catastrophe.<sup>3</sup>"
 }
 
-function showNitrogen(){
-  document.getElementById("nitrogen-description").innerHTML = "<p id = 'bold'>Your annual contribution to nutrient pollution:</p>" + numberWithCommas(Math.round(annualNF/1000*298)) + 
-  "kg of additional carbon, " + numberWithCommas(Math.round(annualNF/1000*298/8.7)) + " gallons of gasoline burned, or " + numberWithCommas(Math.round(annualNF*10/453.59)) + " pounds of fertilizer polluted every year.<sup>1,2</sup>"
+function showEnvironmentText(){
+  document.getElementById("environment-description").innerHTML =
+  // Carbon
+  "For your reference, " + annualCF + "kgs of Carbon is equivalent to "
+  + numberWithCommas(Math.round(annualCF/8.7))
+  + " gallons of gasoline burned or " + numberWithCommas(Math.round(annualCF * 0.0165)) + " cubic feet of ice melted every year.<sup>4,5</sup> "
+  // Nitrogen
+  + annualNF + "g of Nitrogen waste is equivalent to "
+  + numberWithCommas(Math.round(annualNF/1000*298)) + 
+  "kg of additional carbon emitted or "
+  + numberWithCommas(Math.round(annualNF*10/453.59)) + " additional pounds of fertilizer polluted every year.<sup>1,4</sup> "
+  // Water
+  + annualWF + "L of water consumption is equivalent to "
+  + numberWithCommas(Math.round(annualWF/35*0.264172/365)) + " bathtubs of water every day.<sup>7</sup>"
+  + " Meat and dairy production account for three-fourths of all carbon emissions from an average American diet"
+  + " and are also the two highest sources of water usage in food production.<sup>6,1</sup>"
 }
 
-function showWater(){
-  document.getElementById("water-description").innerHTML = "<p id = 'bold'>Your annual consumption of limited freshwater resources:</p> " + numberWithCommas(Math.round(annualWF/35*0.264172)) +
-  " bathtubs of water every year or "
-   + numberWithCommas(Math.round(annualWF/35*0.264172/365)) + " bathtubs of water every day.<sup>5</sup> Beef, cheese, and pork are the three highest sources of water use in food production.<sup>1</sup>"
-}
+// function showNitrogen(){
+//   document.getElementById("nitrogen-description").innerHTML = "<p id = 'bold'>Your annual contribution to nutrient pollution:</p>" + numberWithCommas(Math.round(annualNF/1000*298)) + 
+//   "kg of additional carbon, " + numberWithCommas(Math.round(annualNF/1000*298/8.7)) + " gallons of gasoline burned, or " + numberWithCommas(Math.round(annualNF*10/453.59)) + " pounds of fertilizer polluted every year.<sup>1,2</sup>"
+// }
+
+// function showWater(){
+//   document.getElementById("water-description").innerHTML = "<p id = 'bold'>Your annual consumption of limited freshwater resources:</p> " + numberWithCommas(Math.round(annualWF/35*0.264172)) +
+//   " bathtubs of water every year or "
+//    + numberWithCommas(Math.round(annualWF/35*0.264172/365)) + " bathtubs of water every day.<sup>5</sup> Beef, cheese, and pork are the three highest sources of water use in food production.<sup>1</sup>"
+// }
 
 // Basic function for formatting a number with commas, Standard regex probably from StackOverflow
 function numberWithCommas(x) {
@@ -250,9 +290,8 @@ var rangeSlider = function(){
     document.getElementById("nitrogenG").innerHTML = numberWithCommas(annualNF) + "g";
     document.getElementById("waterL").innerHTML = numberWithCommas(annualWF) + "L";
 
-    showCarbon();
-    showNitrogen();
-    showWater();
+    showEnvironmentAverageText()
+    showEnvironmentText();
   });
 };
   
@@ -262,3 +301,11 @@ rangeSlider();
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+referencesButton.addEventListener("click", function(){
+  plusSlides(1);
+})
+
+referencesButtonBack.addEventListener("click", function(){
+  plusSlides(-1);
+})
