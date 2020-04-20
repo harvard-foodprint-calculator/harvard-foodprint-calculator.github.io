@@ -26,14 +26,12 @@
         3. Make Step 4 Aesthetically Appear better    
         4. Reach Out to the Crimson
         6. Send .zip file to Luke
-        7. Log 30 hours
         10. Ensure your Firebase Data Rules are safe
     Done:
         5. Upload and Connect to GitHub
         8. Comment and Reorganize Code so that future viewers have an easier time understanding your code
         9. Creating the README.md file
         9. Clean up your Firebase Database with all the test submissions you have
-        
 -->
 
 <!DOCTYPE html>
@@ -80,7 +78,7 @@
                     <h4 id='step-title'>Step 1 of 4: Meat, Fish, & Eggs</h4>
                     <p id = 'title-subheading'>How many servings of each food do you consume on an average day?</p>
                     <p id = 'title-subheading'>Not sure what a standard portion size is? Click
-                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png">here</a>
+                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png" target="_blank">here</a>
                         to find out more.</p>
                     <div id = 'post-subtitle-spacing'></div>
                     
@@ -128,7 +126,7 @@
                     <h4 id='step-title'>Step 2 of 4: Dairy, Fruits, & Vegetables</h4>
                     <p id = 'title-subheading'>How many servings of each food do you consume on an average day?</p>
                     <p id = 'title-subheading'>Not sure what a standard portion size is? Click
-                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png">here</a>
+                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png" target="_blank">here</a>
                         to find out more.</p>
                     <div id = 'post-subtitle-spacing'></div>
                     
@@ -177,7 +175,7 @@
                     <h4 id='step-title'>Step 3 of 4: Grains, Nuts, & Fats</h4>
                     <p id = 'title-subheading'>How many servings of each food do you consume on an average day?</p>
                     <p id = 'title-subheading'>Not sure what a standard portion size is? Click
-                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png">here</a>
+                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png" target="_blank">here</a>
                         to find out more.</p>
                     <div id = 'post-subtitle-spacing-3'></div>
 
@@ -217,9 +215,8 @@
                 <div class="slide-container">
                     <!-- Subheading with page description and title -->
                     <h4 id='step-title'>Step 4 of 4: More About You (Optional)</h4>
-                    <!-- I don't think this next step is absolutely necessary that we ask, so it's probably best we leave this out.
                     <p id = 'title-subheading'>Help researchers at Harvard help the planet by sharing a bit about yourself.</p>
-                    -->
+                    <p id = 'title-subheading'>Click <a href='privacy.html' target="_blank">here</a> to access our privacy policy.</p>
                     <div id='random-padding' style = 'padding: 3px;'></div>
 
                     <!-- Question 1: Gender -->
@@ -227,7 +224,7 @@
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div class="radio-toolbar">
                         <label for="radio-male">
-                            <input type="radio" value="male" name="radio-gender" id="radio-male" checked> <span>Male</span>
+                            <input type="radio" value="male" name="radio-gender" id="radio-male"> <span>Male</span>
                         </label>
                     
                         <label for="radio-female">
@@ -239,7 +236,7 @@
                         </label>
 
                         <label for="radio-gender-blank">
-                            <input type="radio" value="blank"  name="radio-gender" id="radio-gender-blank"> <span>Prefer Not to Say</span>
+                            <input type="radio" value="blank"  name="radio-gender" id="radio-gender-blank" checked> <span>Prefer Not to Say</span>
                         </label>
                     </div>
 
@@ -248,7 +245,7 @@
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div class="radio-toolbar">
                         <label for="radio-0-20">
-                            <input type="radio" value="0-20" name="radio-age" id="radio-0-20" checked> <span>0-20</span>
+                            <input type="radio" value="0-20" name="radio-age" id="radio-0-20"> <span>0-20</span>
                         </label>
                     
                         <label for="radio-21-40">
@@ -264,7 +261,7 @@
                         </label>
 
                         <label for="radio-age-blank">
-                            <input type="radio" value="blank"  name="radio-age" id="radio-age-blank"> <span>Prefer Not to Say</span>
+                            <input type="radio" value="blank"  name="radio-age" id="radio-age-blank" checked> <span>Prefer Not to Say</span>
                         </label>
                     </div>
 
@@ -274,7 +271,7 @@
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div class="radio-toolbar" style = "padding-bottom: 3px;">
                         <label for="radio-white">
-                            <input type="radio" value="white" name="radio-ethnicity" id="radio-white" checked> <span>White</span>
+                            <input type="radio" value="white" name="radio-ethnicity" id="radio-white"> <span>White</span>
                         </label>
                     
                         <label for="radio-black">
@@ -289,6 +286,7 @@
                             <input type="radio" value="asian"  name="radio-ethnicity" id="radio-asian"> <span>Asian</span>
                         </label>
                     </div>
+                    <div id = 'padding2'></div>
                     <div class='radio-toolbar'>
                         <label for="radio-native">
                             <input type="radio" value="native american"  name="radio-ethnicity" id="radio-native"> <span>Native American</span>
@@ -299,7 +297,7 @@
                         </label>
 
                         <label for="radio-ethnicity-blank">
-                            <input type="radio" value="blank"  name="radio-ethnicity" id="radio-ethnicity-blank"> <span>Prefer Not to Say</span>
+                            <input type="radio" value="blank"  name="radio-ethnicity" id="radio-ethnicity-blank" checked> <span>Prefer Not to Say</span>
                         </label>
                     </div>
 
@@ -309,7 +307,7 @@
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div class="radio-toolbar" style = "padding-bottom: 3px;">
                         <label for="radio-0-40">
-                            <input type="radio" value="$0-$40K" name="radio-income" id="radio-0-40" checked> <span>$0-$40,000</span>
+                            <input type="radio" value="$0-$40K" name="radio-income" id="radio-0-40"> <span>$0-$40,000</span>
                         </label>
                     
                         <label for="radio-40-80">
@@ -320,7 +318,8 @@
                             <input type="radio" value="$80-$160K"  name="radio-income" id="radio-80-160"> <span> $80,000-$160,000</span>
                         </label>
                     </div>
-                    <div class = 'radio-toolbar' style = "padding-bottom: 15px;">
+                    <div id = 'padding2'></div>
+                    <div class = 'radio-toolbar' style = "padding-bottom: 18px;">
                         <label for="radio-160-320">
                             <input type="radio" value="$160K-$320K"  name="radio-income" id="radio-160-320"> <span>$160,000-$320,000</span>
                         </label>
@@ -330,16 +329,17 @@
                         </label>
 
                         <label for="radio-income-blank">
-                            <input type="radio" value="blank"  name="radio-income" id="radio-income-blank"> <span>Prefer Not to Say</span>
+                            <input type="radio" value="blank"  name="radio-income" id="radio-income-blank" checked> <span>Prefer Not to Say</span>
                         </label>
                     </div>
 
-                    <!-- Question 5: Zip Code -->
+                    <!-- Question 5: Zip Code -- LEAVING OUT FOR NOW!
                     <h2>ZIP CODE</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
                     <div id = 'radio-toolbar' style = "padding-bottom: 10px;">
                         <input type="number" name="quantity" id='zipcode' min="1" max="99999" step='1'>
                     </div>
+                    -->
                     
                     <!-- Simple Button to submit the calculator's results -->
                     <!-- There's a JavaScript function that activates when this button is clicked -->
@@ -392,7 +392,7 @@
                     <div id = 'reference-container' >
                         <p id = 'title-subheading' style = 'text-align: justify; padding-left: 10px;'>
                             Looking for ways to make a change and improve your diet's sustainability?
-                            Check out <a href = 'https://www.hsph.harvard.edu/nutritionsource/sustainability/plate-and-planet/'>these recommendations</a>
+                            For a seven day meal plan with recipes and tons of other good stuff, check out <a href = 'https://www.hsph.harvard.edu/nutritionsource/sustainability/plate-and-planet/' target="_blank">these recommendations</a>
                             from the Harvard T.H. Chan School of Public Health on consuming a healthy and Earth-friendly diet.</p>
                     
                         <p id = 'references-title'>References</p>

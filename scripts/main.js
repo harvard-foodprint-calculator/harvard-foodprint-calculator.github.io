@@ -6,7 +6,9 @@
 // Order is: [beef, chicken, pork, fish, eggs, milk, cheese, fruits, veg, wheat, rice, oil, nuts, beans]
 // Could probably use an ordered dictionary for a bit more clarity here but this suffices
 var foodServings_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var surveyResults_array = [0, 0, 0, 0, 0]
+// Array with asking for Zip Code
+// var surveyResults_array = [0, 0, 0, 0, 0]
+var surveyResults_array = [0, 0, 0, 0]
 var annualCF = 0;
 var annualNF = 0;
 var annualWF = 0;
@@ -72,7 +74,7 @@ function updateRadioValue() {
       surveyResults_array[3] = ele[i].value; 
   } 
 
-  surveyResults_array[4] = document.getElementById('zipcode').value; 
+  // surveyResults_array[4] = document.getElementById('zipcode').value; 
 } 
 
 // -- FINAL SUBMIT BUTTON ON STEP 4 OF 4 --
@@ -135,7 +137,7 @@ submitButton.addEventListener("click", function(){
     user_age: surveyResults_array[1].toString(),
     user_ethnicity: surveyResults_array[2].toString(),
     user_income: surveyResults_array[3].toString(),
-    user_zipcode: surveyResults_array[4].toString(),
+    // user_zipcode: surveyResults_array[4].toString(),
   })
   .then(function() {
     console.log("Document successfully written!");

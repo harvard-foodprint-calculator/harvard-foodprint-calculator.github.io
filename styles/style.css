@@ -428,6 +428,10 @@ input::-moz-focus-outer {
   padding-bottom: 21px;
 }
 
+#padding2{
+  padding-bottom: 2px;
+}
+
 .radio-toolbar input[type="radio"] {
   border: 0; 
   clip: rect(0 0 0 0); 
@@ -468,16 +472,6 @@ input::-moz-focus-outer {
 
 span{
   color: #444;
-  font-family: OpenSans-Light;
-}
-
-
-#zipcode{
-  margin-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  height: 30px;
-  width: 65px;
   font-family: OpenSans-Light;
 }
 
