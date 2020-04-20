@@ -192,8 +192,6 @@ function showEnvironmentText(){
   // Water
   + annualWF + "L of water consumption is equivalent to "
   + numberWithCommas(Math.round(annualWF/35*0.264172/365)) + " bathtubs of water every day.<sup>7</sup>"
-  + " Meat and dairy production account for three-fourths of all carbon emissions from an average American diet"
-  + " and are also the two highest sources of water usage in food production.<sup>6,1</sup>"
 }
 
 // function showNitrogen(){
