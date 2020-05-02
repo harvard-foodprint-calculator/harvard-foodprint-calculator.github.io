@@ -158,7 +158,7 @@ h4 {
   background: #fff;
   border-radius: 5px;
   /* padding used to maintain top spacing */
-  padding: 1.8vw 2.4vw 1.8vw 2.4vw;
+  padding: 1.8vw 3.0vh 1.8vw 2.4vw;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -456,8 +456,8 @@ input::-moz-focus-outer {
 /* https://codepen.io/SitePoint/pen/qhCba */
 
 .radio-toolbar {
-  margin: 5px;
-  padding-bottom: 20px;
+  margin: 4px;
+  padding-bottom: 18px;
 }
 
 #padding2{
@@ -647,6 +647,11 @@ td {
     font-size: 25px;
   }
 
+  .radio-toolbar {
+    margin: 1px;
+    padding-bottom: 11px;
+  }
+
   span{
     font-size: 12px;
   }
@@ -680,7 +685,7 @@ td {
   }
 
   #submitButton{
-    margin-top: 40px;
+    margin-top: 15px;
     font-size: 15px;
     padding: 10px 30px;
   }
