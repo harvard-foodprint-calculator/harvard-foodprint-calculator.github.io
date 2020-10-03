@@ -26,11 +26,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Foodprint Calculator</title>
-    <script src = "./scripts/main.js"></script>
-    <link rel = "stylesheet" type = "text/css" href = "./styles/style.css?version=86" />
+
+    <!-- Favicon Header for Harvard -->
+    <link rel="icon" 
+      type="image/png" 
+      href="images/harvard-shield.png">
+    
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-firestore.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel = "stylesheet" type = "text/css" href = "./styles/style.css?version=86" />
+    <script src = "./scripts/main.js"></script>
 </head>
 <body>
     <!-- The top showcase banner with image and text -->
@@ -52,580 +65,1131 @@
     <!-- Contains the bulk of the calculator, encapsulates the survey questions and final result -->
     <div id="slider-container">
     <center>
-        <div class="slideshow-container">
+        <div class="slideshow-container"  >
             <!-- Slideshow carousel with number and caption text -->
             <!-- From: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
 
-            <!-- NEW PAGE ~~ Step 1 of 4: Meat, Fish, & Eggs Page (the initial landing page) -->
-            <div class="mySlides fade">
+            <!-- NEW PAGE ~~ Step 1 of 3: Meat, Fish, & Eggs Page (the initial landing page) -->
+            <div class="mySlides fader">
                 <div class="slide-container">
                     <!-- Subheading with page description and title -->
-                    <h4 id='step-title'>Step 1 of 4: Meat, Fish, & Eggs</h4>
-                    <p id = 'title-subheading'>How many servings of each food do you consume on an average day?</p>
-                    <p id = 'title-subheading'>Not sure what a standard portion size is? Click
+                    <h4 id='step-title'>Step 1 of 3: Animal Products</h4>
+                    <p id = 'title-subheading'>How many servings of each food do you consume on an average week?<br>
+                        Not sure what a standard portion size is? Click
                         <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png" target="_blank">here</a>
                         to find out more.</p>
-                    <div id = 'post-subtitle-spacing'></div>
+                    <div id = 'post-subtitle-spacing-3'></div>
                     
-                    <!-- Start of survey questions and range sliders -->
-                    <h2 id="food">Beef</h2>
-                    <p id = 'serving-size'>(3 oz / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="beef" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
+
+                    <!-- Table Headers with serving sizes -->
+                    <div class="row" style='padding-right:100px;'>
+                        <div class="col">
+                            <p>
+                                 
+                            </p>
+                        </div>
+                        <div class = "col-9">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <div class='col-headers'>
+                                    <div style = 'padding-top: 10px;'></div>
+                                    <p id='table-heading-font'>
+                                        Never
+                                    </p>
+                                </div>
+                                <div class='col-headers'>
+                                    <p id='table-heading-font'>
+                                        1-3x <br>/ mo
+                                    </p>
+                                </div>
+                                <div class='col-headers'>
+                                    <p id='table-heading-font'>
+                                        1x <br>/ wk
+                                    </p>
+                                </div>
+                                <div class='col-headers'>
+                                    <p id='table-heading-font'>
+                                        2-3x <br>/ wk
+                                    </p>
+                                </div>
+                                <div class='col-headers'>
+                                    <p id='table-heading-font'>
+                                        4-6x <br>/ wk
+                                    </p>
+                                </div>
+                                <div class='col-headers'>
+                                    <p id='table-heading-font'>
+                                        1x <br>/ day
+                                    </p>
+                                </div>
+                                <div class='col-headers'>
+                                    <p id='table-heading-font'>
+                                        2-3x <br>/ day
+                                    </p>
+                                </div>
+                                <div class='col-headers'>
+                                    <p id='table-heading-font'>
+                                        4-6x <br>/ day
+                                    </p>
+                                </div>
+                                <div class='col-headers'>
+                                    <p id='table-heading-font'>
+                                        6+ <br>/ day
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 id="food">Chicken</h2>
-                    <p id = 'serving-size'>(3 oz / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="chicken" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
+                    
+                    <!-- Beginning the food table rows -->
+                    <!-- Beef -->
+                    <div class="row" style='padding-right:100px;'>
+                        <div class='col'>
+                            <h2 id="food">Beef</h2>
+                            <p id = 'serving-size'>(3 oz / serving)</p>
+                        </div>
+
+                        <div class='col-9'>
+                            <div class="btn-group btn-group-toggle" id="beef" data-toggle="buttons">
+                                <label class="shadow btn btn-primary active">
+                                    <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option2" checked value = "2"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option3" checked value = "4"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option4" checked value = "10"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option5" checked value = "20"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option6" checked value = "30"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option7" checked value = "75"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option8" checked value = "150"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option9" checked value = "200"> X
+                                </label>
+                            </div>
+                        </div>
+
                     </div>
-                    <h2 id="food">Pork</h2>
-                    <p id = 'serving-size'>(3 oz / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="pork" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
+
+                    <!-- Chicken -->
+                    <div class="row" style='padding-right:100px;'>
+                        <div class='col'>
+                            <h2 id="food">Chicken</h2>
+                            <p id = 'serving-size'>(3 oz / serving)</p>
+                        </div>
+
+                        <div class='col-9'>
+                            <div class="btn-group btn-group-toggle" id="chicken" data-toggle="buttons">
+                                <label class="shadow btn btn-primary active">
+                                    <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option2" checked value = "2"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option3" checked value = "4"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option4" checked value = "10"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option5" checked value = "20"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option6" checked value = "30"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option7" checked value = "75"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option8" checked value = "150"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option9" checked value = "200"> X
+                                </label>
+                            </div>
+                        </div>
+
                     </div>
-                    <h2 id="food">Fish & Seafood</h2>
-                    <p id = 'serving-size'>(3.5 oz / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="fish" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
+                    
+                    <!-- Pork -->
+                    <div class="row" style='padding-right:100px;'>
+                        <div class='col'>
+                            <h2 id="food">Pork</h2>
+                            <p id = 'serving-size'>(3 oz / serving)</p>
+                        </div>
+
+                        <div class='col-9'>
+                            <div class="btn-group btn-group-toggle" id="pork" data-toggle="buttons">
+                                <label class="shadow btn btn-primary active">
+                                    <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option2" checked value = "2"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option3" checked value = "4"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option4" checked value = "10"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option5" checked value = "20"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option6" checked value = "30"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option7" checked value = "75"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option8" checked value = "150"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option9" checked value = "200"> X
+                                </label>
+                            </div>
+                        </div>
+
                     </div>
-                    <h2 id="food">Eggs</h2>
-                    <p id = 'serving-size'>(1 egg or 2 oz / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="eggs" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
+
+                    <!-- Fish -->
+                    <div class="row" style='padding-right:100px;'>
+                        <div class='col'>
+                            <h2 id="food">Fish & Seafood</h2>
+                            <p id = 'serving-size'>(3.5 oz / serving)</p>
+                        </div>
+
+                        <div class='col-9'>
+                            <div class="btn-group btn-group-toggle" id="fish" data-toggle="buttons">
+                                <label class="shadow btn btn-primary active">
+                                    <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option2" checked value = "2"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option3" checked value = "4"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option4" checked value = "10"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option5" checked value = "20"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option6" checked value = "30"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option7" checked value = "75"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option8" checked value = "150"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option9" checked value = "200"> X
+                                </label>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!-- Eggs -->
+                    <div class="row" style='padding-right:100px;'>
+                        <div class='col'>
+                            <h2 id="food">Eggs</h2>
+                            <p id = 'serving-size'>(1 egg or 2 oz / serving)</p>
+                        </div>
+
+                        <div class='col-9'>
+                            <div class="btn-group btn-group-toggle" id="eggs" data-toggle="buttons">
+                                <label class="shadow btn btn-primary active">
+                                    <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option2" checked value = "2"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option3" checked value = "4"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option4" checked value = "10"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option5" checked value = "20"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option6" checked value = "30"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option7" checked value = "75"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option8" checked value = "150"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option9" checked value = "200"> X
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Milk -->
+                    <div class="row" style='padding-right:100px;'>
+                        <div class='col'>
+                            <h2 id="food">Milk & Yogurt</h2>
+                    <p id = 'serving-size'>(1 cup / serving)</p>
+                        </div>
+
+                        <div class='col-9'>
+                            <div class="btn-group btn-group-toggle" id="milk" data-toggle="buttons">
+                                <label class="shadow btn btn-primary active">
+                                    <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option2" checked value = "2"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option3" checked value = "4"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option4" checked value = "10"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option5" checked value = "20"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option6" checked value = "30"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option7" checked value = "75"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option8" checked value = "150"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option9" checked value = "200"> X
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Cheese -->
+                    <div class="row" style='padding-right:100px;'>
+                        <div class='col'>
+                            <h2 id="food">Cheese</h2>
+                            <p id = 'serving-size'>(2 oz/ serving)</p>
+                        </div>
+
+                        <div class='col-9'>
+                            <div class="btn-group btn-group-toggle" id="cheese" data-toggle="buttons">
+                                <label class="shadow btn btn-primary active">
+                                    <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option2" checked value = "2"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option3" checked value = "4"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option4" checked value = "10"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option5" checked value = "20"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option6" checked value = "30"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option7" checked value = "75"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option8" checked value = "150"> X
+                                </label>
+                                <label class="shadow btn btn-primary">
+                                    <input type="radio" name="options" id="option9" checked value = "200"> X
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    
                 </div>
 
                 <!-- Only a next button needed, because we do not want the ability for users to go backwards on page 1 -->
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
         
-            <!-- NEW PAGE ~~ Step 2 of 4: Dairy, Fruits, & Vegetables -->
-            <div class="mySlides fade">
+            <!-- NEW PAGE ~~ Step 2 of 3: Grains, Fruits, & Vegetables -->
+            <div class="mySlides fader">
                 <div class="slide-container">
                     <!-- Subheading with page description and title -->
-                    <h4 id='step-title'>Step 2 of 4: Dairy, Fruits, & Vegetables</h4>
-                    <p id = 'title-subheading'>How many servings of each food do you consume on an average day?</p>
-                    <p id = 'title-subheading'>Not sure what a standard portion size is? Click
+                    <h4 id='step-title'>Step 2 of 3: Plant-Based Foods</h4>
+                    <p id = 'title-subheading'>How many servings of each food do you consume on an average week?
+                        <br>
+                        Not sure what a standard portion size is? Click
                         <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png" target="_blank">here</a>
                         to find out more.</p>
-                    <div id = 'post-subtitle-spacing'></div>
+                        <div id = 'post-subtitle-spacing-3'></div>
                     
-                    <!-- Start of survey questions and range sliders -->
-                    <h2 id="food">Milk & Yogurt</h2>
-                    <p id = 'serving-size'>(1 cup / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="milk" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
-                    </div>
-                    <h2 id="food">Cheese</h2>
-                    <p id = 'serving-size'>(2 oz/ serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="cheese" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
-                    </div>
-                    <h2 id="food">Beans & Legumes</h2>
-                    <p id = 'serving-size'>(0.5 cup cooked / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="beans" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
-                    </div>
-                    <h2 id="food">Fruits</h2>
-                    <p id = 'serving-size'>(1 apple or 5 oz / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="fruits" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
-                    </div>
-                    <h2 id="food">Vegetables</h2>
-                    <p id = 'serving-size'>(1 cup / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="vegetables" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
-                    </div>
+
+                        <!-- Table Headers with serving sizes -->
+                        <div class="row" style='padding-right:100px;'>
+                            <div class="col">
+                                <p>
+                                     
+                                </p>
+                            </div>
+                            <div class = "col-9">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <div class='col-headers'>
+                                        <div style = 'padding-top: 10px;'></div>
+                                        <p id='table-heading-font'>
+                                            Never
+                                        </p>
+                                    </div>
+                                    <div class='col-headers'>
+                                        <p id='table-heading-font'>
+                                            1-3x <br>/ mo
+                                        </p>
+                                    </div>
+                                    <div class='col-headers'>
+                                        <p id='table-heading-font'>
+                                            1x <br>/ wk
+                                        </p>
+                                    </div>
+                                    <div class='col-headers'>
+                                        <p id='table-heading-font'>
+                                            2-3x <br>/ wk
+                                        </p>
+                                    </div>
+                                    <div class='col-headers'>
+                                        <p id='table-heading-font'>
+                                            4-6x <br>/ wk
+                                        </p>
+                                    </div>
+                                    <div class='col-headers'>
+                                        <p id='table-heading-font'>
+                                            1x <br>/ day
+                                        </p>
+                                    </div>
+                                    <div class='col-headers' >
+                                        <p id='table-heading-font'>
+                                            2-3x <br>/ day
+                                        </p>
+                                    </div>
+                                    <div class='col-headers'>
+                                        <p id='table-heading-font'>
+                                            4-6x <br>/ day
+                                        </p>
+                                    </div>
+                                    <div class='col-headers'>
+                                        <p id='table-heading-font'>
+                                            6+ <br>/ day
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Beginning the food table rows -->
+                        <!-- Beans -->
+                        <div class="row" style='padding-right:100px;'>
+                            <div class='col'>
+                                <h2 id="food" style='font-size: calc(10px + 0.42vw);'>Beans & Legumes</h2>
+                                <p id = 'serving-size'>(0.5 cup cooked / serving)</p>
+                            </div>
+    
+                            <div class='col-9'>
+                                <div class="btn-group btn-group-toggle" id="beans" data-toggle="buttons">
+                                    <label class="shadow btn btn-primary active">
+                                        <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option2" checked value = "2"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option3" checked value = "4"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option4" checked value = "10"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option5" checked value = "20"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option6" checked value = "30"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option7" checked value = "75"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option8" checked value = "150"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option9" checked value = "200"> X
+                                    </label>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <!-- Fruits -->
+                        <div class="row" style='padding-right:100px;'>
+                            <div class='col'>
+                                <h2 id="food">Fruits</h2>
+                                <p id = 'serving-size'>(1 apple or 5 oz / serving)</p>
+                            </div>
+    
+                            <div class='col-9'>
+                                <div class="btn-group btn-group-toggle" id="fruits" data-toggle="buttons">
+                                    <label class="shadow btn btn-primary active">
+                                        <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option2" checked value = "2"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option3" checked value = "4"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option4" checked value = "10"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option5" checked value = "20"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option6" checked value = "30"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option7" checked value = "75"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option8" checked value = "150"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option9" checked value = "200"> X
+                                    </label>
+                                </div>
+                            </div>
+    
+                        </div>
+                        
+                        <!-- Vegetables -->
+                        <div class="row" style='padding-right:100px;'>
+                            <div class='col'>
+                                <h2 id="food">Vegetables</h2>
+                                <p id = 'serving-size'>(1 cup / serving)</p>
+                            </div>
+    
+                            <div class='col-9'>
+                                <div class="btn-group btn-group-toggle" id="vegetables" data-toggle="buttons">
+                                    <label class="shadow btn btn-primary active">
+                                        <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option2" checked value = "2"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option3" checked value = "4"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option4" checked value = "10"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option5" checked value = "20"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option6" checked value = "30"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option7" checked value = "75"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option8" checked value = "150"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option9" checked value = "200"> X
+                                    </label>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <!-- Wheat & Grains -->
+                        <div class="row" style='padding-right:100px;'>
+                            <div class='col'>
+                                <h2 id="food">Wheat & Grains</h2>
+                                <p id = 'serving-size'>(1 slice bread, 0.5c oats)</p>
+                            </div>
+    
+                            <div class='col-9'>
+                                <div class="btn-group btn-group-toggle" id="wheat" data-toggle="buttons">
+                                    <label class="shadow btn btn-primary active">
+                                        <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option2" checked value = "2"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option3" checked value = "4"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option4" checked value = "10"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option5" checked value = "20"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option6" checked value = "30"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option7" checked value = "75"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option8" checked value = "150"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option9" checked value = "200"> X
+                                    </label>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <!-- Rice -->
+                        <div class="row" style='padding-right:100px;'>
+                            <div class='col'>
+                                <h2 id="food">Rice</h2>
+                                <p id = 'serving-size'>(0.5 cup cooked / serving)</p>
+                            </div>
+    
+                            <div class='col-9'>
+                                <div class="btn-group btn-group-toggle" id="rice" data-toggle="buttons">
+                                    <label class="shadow btn btn-primary active">
+                                        <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option2" checked value = "2"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option3" checked value = "4"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option4" checked value = "10"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option5" checked value = "20"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option6" checked value = "30"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option7" checked value = "75"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option8" checked value = "150"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option9" checked value = "200"> X
+                                    </label>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <!-- Fats & Oils -->
+                        <div class="row" style='padding-right:100px;'>
+                            <div class='col'>
+                                <h2 id="food">Fats & Oils</h2>
+                                <p id = 'serving-size'>(1 tbsp oil, 1 bag of chips)</p>
+                            </div>
+    
+                            <div class='col-9'>
+                                <div class="btn-group btn-group-toggle" id="oil" data-toggle="buttons">
+                                    <label class="shadow btn btn-primary active">
+                                        <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option2" checked value = "2"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option3" checked value = "4"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option4" checked value = "10"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option5" checked value = "20"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option6" checked value = "30"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option7" checked value = "75"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option8" checked value = "150"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option9" checked value = "200"> X
+                                    </label>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <!-- Nuts & Seeds -->
+                        <div class="row" style='padding-right:100px;'>
+                            <div class='col'>
+                                <h2 id="food">Nuts & Seeds</h2>
+                                <p id = 'serving-size'>(0.25 cup / serving)</p>
+                            </div>
+    
+                            <div class='col-9'>
+                                <div class="btn-group btn-group-toggle" id="nuts" data-toggle="buttons">
+                                    <label class="shadow btn btn-primary active">
+                                        <input type="radio" name="options" id="option1" checked value = "0" checked> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option2" checked value = "2"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option3" checked value = "4"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option4" checked value = "10"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option5" checked value = "20"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option6" checked value = "30"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option7" checked value = "75"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option8" checked value = "150"> X
+                                    </label>
+                                    <label class="shadow btn btn-primary">
+                                        <input type="radio" name="options" id="option9" checked value = "200"> X
+                                    </label>
+                                </div>
+                            </div>
+    
+                        </div>
+                        
                 </div>
 
                 <!-- Previous and Next Buttons to change between the pages -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-
-            <!-- NEW PAGE ~~ Step 3 of 4: Grains, Nuts, & Fats -->
-            <div class="mySlides fade">
-                <div class="slide-container">
-                    <!-- Subheading with page description and title -->
-                    <h4 id='step-title'>Step 3 of 4: Grains, Nuts, & Fats</h4>
-                    <p id = 'title-subheading'>Fill out this portion of the survey with the dominant food group of your item in mind.</p>
-                    <p id = 'title-subheading'>Not sure what a standard portion size is? Click
-                        <a href = "https://ivaluefood.com/resources/wp-content/uploads/2016/06/Portion_Size_Cheat_Sheet-big.png" target="_blank">here</a>
-                        to find out more.</p>
-                    <div id = 'post-subtitle-spacing-3'></div>
-
-                    <!-- Start of survey questions and range sliders -->
-                    <h2 id="food">Wheat & Other Grains</h2>
-                    <p id = 'serving-size'>(1 slice bread, 1/2 cup oatmeal, 2 cookies / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="wheat" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
-                    </div>
-                    <h2 id="food">Rice</h2>
-                    <p id = 'serving-size'>(0.5 cup cooked / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="rice" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
-                    </div>
-                    <h2 id="food">Added Fats & Oil</h2>
-                    <p id = 'serving-size'>(1 tbsp oil, 1 bag of chips / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="oil" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
-                    </div>
-                    <h2 id="food">Nuts & Seeds</h2>
-                    <p id = 'serving-size'>(0.25 cup / serving)</p>
-                    <div class="range-slider">
-                        <input class="range-slider__range" id="nuts" type="range" value="0" min="0" max="8" step="0.5">
-                        <span class="range-slider__value">0</span>
-                    </div>
-                </div>
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a> -->
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
             
-            <!-- NEW PAGE ~~ Step 4 of 4: More About You (Optional) -->
+            <!-- NEW PAGE ~~ Step 3 of 3: More About You (Optional) -->
             <!-- SURVEY QUESTIONS: Only one of the first four pages that's different from the rest -->
-            <div class="mySlides fade">
+            <div class="mySlides fader">
                 <div class="slide-container">
                     <!-- Subheading with page description and title -->
-                <h4 id='step-title' style = "margin-top: 5px;">Step 4 of 4: More About You (Optional)</h4>
-                    <p id = 'title-subheading' style = "padding-bottom: 10px;">Help researchers at Harvard help the planet by sharing anonymously.</p>
-                    <p id = 'title-subheading'style = "padding-bottom: 8px;">Click <a href='privacy.html' target="_blank">here</a> ​to review the privacy policy. If you currently reside in the EU, skip this step.</p>
+                    <h4 id='step-title'>Step 3 of 3: More About You (Optional)</h4>
+                    <p id = 'title-subheading'>Help researchers at Harvard help the planet by sharing anonymously.<br>
+                        Click <a href='privacy.html' target="_blank">here</a> ​to review the privacy policy. If you currently reside in the EU, skip this step.</p>
 
-                    <!-- Question 1: Gender -->
+                    <div id = 'post-subtitle-spacing'></div>
+
+                    <!-- Question 1: Diet -->
+                    <h2>DIETARY PREFERENCE</h2>
+                    <div id = 'post-subtitle-spacing-2'></div>
+                    <select class="selectpicker show-menu-arrow form-control" id = 'dropdown-diet'>
+                        <option value="n/a" selected>Prefer Not to Say</option>
+                        <option value="omnivore">Omnivore</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="LO-vegetarian">Lacto-ovo Vegetarian</option>
+                        <option value="mediterranean">Mediterranean</option>
+                        <option value="kosher">Kosher</option>
+                        <option value="halal">Halal</option>
+                        <option value="vegan">Vegan</option>
+                    </select>
+                    <div id = 'rand-spacing'></div>
+
+                    <!-- Question 2: Gender -->
                     <h2>GENDER</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
-                    <div class="radio-toolbar">
-                        <label for="radio-male">
-                            <input type="radio" value="male" name="radio-gender" id="radio-male"> <span>Male</span>
-                        </label>
-                    
-                        <label for="radio-female">
-                            <input type="radio" value="female" name="radio-gender" id="radio-female"> <span>Female</span>
-                        </label>
-                    
-                        <label for="radio-other">
-                            <input type="radio" value="other"  name="radio-gender" id="radio-other"> <span>Other</span>
-                        </label>
+                    <select class="selectpicker show-menu-arrow form-control" id = 'dropdown-gender'>
+                        <option value="n/a" selected>Prefer Not to Say</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other!</option>
+                    </select>
+                    <div id = 'rand-spacing'></div>
 
-                        <label for="radio-gender-blank">
-                            <input type="radio" value="blank"  name="radio-gender" id="radio-gender-blank" checked> <span>Prefer Not to Say</span>
-                        </label>
-                    </div>
-
-                    <!-- Question 2: Age -->
+                    <!-- Question 3: Age -->
                     <h2>AGE RANGE</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
-                    <div class="radio-toolbar">
-                        <label for="radio-0-20">
-                            <input type="radio" value="0-20" name="radio-age" id="radio-0-20"> <span>0-20</span>
-                        </label>
-                    
-                        <label for="radio-21-40">
-                            <input type="radio" value="21-40" name="radio-age" id="radio-21-40"> <span>21-40</span>
-                        </label>
-                    
-                        <label for="radio-41-60">
-                            <input type="radio" value="41-60"  name="radio-age" id="radio-41-60"> <span>41-60</span>
-                        </label>
+                    <select class="selectpicker show-menu-arrow form-control" id = 'dropdown-age'>
+                        <option value="n/a" selected>Prefer Not to Say</option>
+                        <option value="18-22">18-22</option>
+                        <option value="22-29">22-29</option>
+                        <option value="30-39">30-39</option>
+                        <option value="40-49">40-49</option>
+                        <option value="50-59">50-59</option>
+                        <option value="60+">60+</option>
+                    </select>
+                    <div id = 'rand-spacing'></div>
 
-                        <label for="radio-60+">
-                            <input type="radio" value="60+"  name="radio-age" id="radio-60+"> <span>60+</span>
-                        </label>
-
-                        <label for="radio-age-blank">
-                            <input type="radio" value="blank"  name="radio-age" id="radio-age-blank" checked> <span>Prefer Not to Say</span>
-                        </label>
-                    </div>
-
-                    <!-- Question 3: Ethnicity -->
-                    <!-- Note ~~ this question needs two lines of answers -->
+                    <!-- Question 4: Ethnicity -->
                     <h2>ETHNICITY</h2>
-                    <div id = 'post-subtitle-spacing-2'></div>
-                    <div class="radio-toolbar" style = "padding-bottom: 0px;">
-                        <label for="radio-white">
-                            <input type="radio" value="white" name="radio-ethnicity" id="radio-white"> <span>White</span>
-                        </label>
-                    
-                        <label for="radio-black">
-                            <input type="radio" value="black" name="radio-ethnicity" id="radio-black"> <span>African American</span>
-                        </label>
-                    
-                        <label for="radio-hispanic">
-                            <input type="radio" value="hispanic"  name="radio-ethnicity" id="radio-hispanic"> <span>Hispanic</span>
-                        </label>
+                    <select class="selectpicker show-menu-arrow form-control" id = 'dropdown-ethnicity'>
+                        <option value="n/a" selected>Prefer Not to Say</option>
+                        <option value="white">White</option>
+                        <option value="african american">Black or African American</option>
+                        <option value="hispanic">Hispanic or Latino</option>
+                        <option value="asian">Asian</option>
+                        <option value="native american">Native American</option>
+                        <option value="other">Other Ethnicity</option>
+                    </select>
+                    <div id = 'rand-spacing'></div>
 
-                        <label for="radio-asian">
-                            <input type="radio" value="asian"  name="radio-ethnicity" id="radio-asian"> <span>Asian</span>
-                        </label>
-                    </div>
-                    <div id = 'padding2'></div>
-                    <div class='radio-toolbar' style = "padding-bottom: 15px;">
-                        <label for="radio-native">
-                            <input type="radio" value="native american"  name="radio-ethnicity" id="radio-native"> <span>Native American</span>
-                        </label>
-
-                        <label for="radio-other">
-                            <input type="radio" value="other"  name="radio-ethnicity" id="radio-other"> <span>Other</span>
-                        </label>
-
-                        <label for="radio-ethnicity-blank">
-                            <input type="radio" value="blank"  name="radio-ethnicity" id="radio-ethnicity-blank" checked> <span>Prefer Not to Say</span>
-                        </label>
-                    </div>
-
-                    <!-- Question 4: Income -->
-                    <!-- Note ~~ this question needs two lines of answers -->
+                    <!-- Question 5: Income -->
                     <h2>ANNUAL HOUSEHOLD INCOME</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
-                    <div class="radio-toolbar" style = "padding-bottom: 0px;">
-                        <label for="radio-0-40">
-                            <input type="radio" value="$0-$40K" name="radio-income" id="radio-0-40"> <span>$0-$40,000</span>
-                        </label>
+                    <select class="selectpicker show-menu-arrow form-control" id = 'dropdown-income'>
+                        <option value="n/a" selected>Prefer Not to Say</option>
+                        <option value="$0-$10,000">$0-$10,000</option>
+                        <option value="$10,000-$40,000">$10,000-$40,000</option>
+                        <option value="$40,000-$80,000">$40,000-$80,000</option>
+                        <option value="$80,000-$160,000">$80,000-$160,000</option>
+                        <option value="$160,000-$250,000">$160,000-$250,000</option>
+                        <option value="$250,000+">$250,000+</option>
+                    </select>
+                    <div id = 'rand-spacing'></div>
+
                     
-                        <label for="radio-40-80">
-                            <input type="radio" value="$40-$80K" name="radio-income" id="radio-40-80"> <span>$40-$80,000</span>
-                        </label>
-                    
-                        <label for="radio-80-160">
-                            <input type="radio" value="$80-$160K"  name="radio-income" id="radio-80-160"> <span> $80-$160,000</span>
-                        </label>
-                    </div>
-                    <div id = 'padding2'></div>
-                    <div class = 'radio-toolbar' style = "padding-bottom: 15px;">
-                        <label for="radio-160-320">
-                            <input type="radio" value="$160K-$320K"  name="radio-income" id="radio-160-320"> <span>$160-$320,000</span>
-                        </label>
 
-                        <label for="radio-320+">
-                            <input type="radio" value="$320K+"  name="radio-income" id="radio-320+"> <span>$320,000+</span>
-                        </label>
-
-                        <label for="radio-income-blank">
-                            <input type="radio" value="blank"  name="radio-income" id="radio-income-blank" checked> <span>Prefer Not to Say</span>
-                        </label>
-                    </div>
-
-                    <!-- Question 5: Country -->
-
+                    <!-- Question 6: Country -->
                     <h2>COUNTRY</h2>
                     <div id = 'post-subtitle-spacing-2'></div>
-                    <div id = 'radio-toolbar' style = "padding-bottom: 12px;">
-                        <select id="radio-country" name="radio-country">
-                            <option disabled value>Select an option</option>
-                            <option value="blank">Prefer Not to Say</option>
-                            <option value="United States">United States</option>
-                            <option value="European Union">European Union</option>
-                            <option value="Afganistan">Afghanistan</option>
-                            <option value="Albania">Albania</option>
-                            <option value="Algeria">Algeria</option>
-                            <option value="American Samoa">American Samoa</option>
-                            <option value="Andorra">Andorra</option>
-                            <option value="Angola">Angola</option>
-                            <option value="Anguilla">Anguilla</option>
-                            <option value="Antigua & Barbuda">Antigua & Barbuda</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Armenia">Armenia</option>
-                            <option value="Aruba">Aruba</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Azerbaijan">Azerbaijan</option>
-                            <option value="Bahamas">Bahamas</option>
-                            <option value="Bahrain">Bahrain</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                            <option value="Barbados">Barbados</option>
-                            <option value="Belarus">Belarus</option>
-                            <option value="Belize">Belize</option>
-                            <option value="Benin">Benin</option>
-                            <option value="Bermuda">Bermuda</option>
-                            <option value="Bhutan">Bhutan</option>
-                            <option value="Bolivia">Bolivia</option>
-                            <option value="Bonaire">Bonaire</option>
-                            <option value="Bosnia & Herzegovina">Bosnia & Herzegovina</option>
-                            <option value="Botswana">Botswana</option>
-                            <option value="Brazil">Brazil</option>
-                            <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
-                            <option value="Brunei">Brunei</option>
-                            <option value="Burkina Faso">Burkina Faso</option>
-                            <option value="Burundi">Burundi</option>
-                            <option value="Cambodia">Cambodia</option>
-                            <option value="Cameroon">Cameroon</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Canary Islands">Canary Islands</option>
-                            <option value="Cape Verde">Cape Verde</option>
-                            <option value="Cayman Islands">Cayman Islands</option>
-                            <option value="Central African Republic">Central African Republic</option>
-                            <option value="Chad">Chad</option>
-                            <option value="Channel Islands">Channel Islands</option>
-                            <option value="Chile">Chile</option>
-                            <option value="China">China</option>
-                            <option value="Christmas Island">Christmas Island</option>
-                            <option value="Cocos Island">Cocos Island</option>
-                            <option value="Colombia">Colombia</option>
-                            <option value="Comoros">Comoros</option>
-                            <option value="Congo">Congo</option>
-                            <option value="Cook Islands">Cook Islands</option>
-                            <option value="Costa Rica">Costa Rica</option>
-                            <option value="Cote DIvoire">Cote DIvoire</option>
-                            <option value="Cuba">Cuba</option>
-                            <option value="Curaco">Curacao</option>
-                            <option value="Djibouti">Djibouti</option>
-                            <option value="Dominica">Dominica</option>
-                            <option value="Dominican Republic">Dominican Republic</option>
-                            <option value="East Timor">East Timor</option>
-                            <option value="Ecuador">Ecuador</option>
-                            <option value="Egypt">Egypt</option>
-                            <option value="El Salvador">El Salvador</option>
-                            <option value="Equatorial Guinea">Equatorial Guinea</option>
-                            <option value="Eritrea">Eritrea</option>
-                            <option value="Ethiopia">Ethiopia</option>
-                            <option value="Falkland Islands">Falkland Islands</option>
-                            <option value="Faroe Islands">Faroe Islands</option>
-                            <option value="Fiji">Fiji</option>
-                            <option value="French Guiana">French Guiana</option>
-                            <option value="French Polynesia">French Polynesia</option>
-                            <option value="French Southern Ter">French Southern Ter</option>
-                            <option value="Gabon">Gabon</option>
-                            <option value="Gambia">Gambia</option>
-                            <option value="Georgia">Georgia</option>
-                            <option value="Ghana">Ghana</option>
-                            <option value="Gibraltar">Gibraltar</option>
-                            <option value="Great Britain">Great Britain</option>
-                            <option value="Greenland">Greenland</option>
-                            <option value="Grenada">Grenada</option>
-                            <option value="Guadeloupe">Guadeloupe</option>
-                            <option value="Guam">Guam</option>
-                            <option value="Guatemala">Guatemala</option>
-                            <option value="Guinea">Guinea</option>
-                            <option value="Guyana">Guyana</option>
-                            <option value="Haiti">Haiti</option>
-                            <option value="Hawaii">Hawaii</option>
-                            <option value="Honduras">Honduras</option>
-                            <option value="Hong Kong">Hong Kong</option>
-                            <option value="Indonesia">Indonesia</option>
-                            <option value="India">India</option>
-                            <option value="Iran">Iran</option>
-                            <option value="Iraq">Iraq</option>
-                            <option value="Ireland">Ireland</option>
-                            <option value="Isle of Man">Isle of Man</option>
-                            <option value="Israel">Israel</option>
-                            <option value="Jamaica">Jamaica</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Jordan">Jordan</option>
-                            <option value="Kazakhstan">Kazakhstan</option>
-                            <option value="Kenya">Kenya</option>
-                            <option value="Kiribati">Kiribati</option>
-                            <option value="Korea North">Korea North</option>
-                            <option value="Korea Sout">Korea South</option>
-                            <option value="Kuwait">Kuwait</option>
-                            <option value="Kyrgyzstan">Kyrgyzstan</option>
-                            <option value="Laos">Laos</option>
-                            <option value="Lebanon">Lebanon</option>
-                            <option value="Lesotho">Lesotho</option>
-                            <option value="Liberia">Liberia</option>
-                            <option value="Libya">Libya</option>
-                            <option value="Liechtenstein">Liechtenstein</option>
-                            <option value="Macau">Macau</option>
-                            <option value="Macedonia">Macedonia</option>
-                            <option value="Madagascar">Madagascar</option>
-                            <option value="Malaysia">Malaysia</option>
-                            <option value="Malawi">Malawi</option>
-                            <option value="Maldives">Maldives</option>
-                            <option value="Mali">Mali</option>
-                            <option value="Marshall Islands">Marshall Islands</option>
-                            <option value="Martinique">Martinique</option>
-                            <option value="Mauritania">Mauritania</option>
-                            <option value="Mauritius">Mauritius</option>
-                            <option value="Mayotte">Mayotte</option>
-                            <option value="Mexico">Mexico</option>
-                            <option value="Midway Islands">Midway Islands</option>
-                            <option value="Moldova">Moldova</option>
-                            <option value="Monaco">Monaco</option>
-                            <option value="Mongolia">Mongolia</option>
-                            <option value="Montserrat">Montserrat</option>
-                            <option value="Morocco">Morocco</option>
-                            <option value="Mozambique">Mozambique</option>
-                            <option value="Myanmar">Myanmar</option>
-                            <option value="Nambia">Nambia</option>
-                            <option value="Nauru">Nauru</option>
-                            <option value="Nepal">Nepal</option>
-                            <option value="Netherland Antilles">Netherland Antilles</option>
-                            <option value="Nevis">Nevis</option>
-                            <option value="New Caledonia">New Caledonia</option>
-                            <option value="New Zealand">New Zealand</option>
-                            <option value="Nicaragua">Nicaragua</option>
-                            <option value="Niger">Niger</option>
-                            <option value="Nigeria">Nigeria</option>
-                            <option value="Niue">Niue</option>
-                            <option value="Norfolk Island">Norfolk Island</option>
-                            <option value="Norway">Norway</option>
-                            <option value="Oman">Oman</option>
-                            <option value="Pakistan">Pakistan</option>
-                            <option value="Palau Island">Palau Island</option>
-                            <option value="Palestine">Palestine</option>
-                            <option value="Panama">Panama</option>
-                            <option value="Papua New Guinea">Papua New Guinea</option>
-                            <option value="Paraguay">Paraguay</option>
-                            <option value="Peru">Peru</option>
-                            <option value="Phillipines">Philippines</option>
-                            <option value="Pitcairn Island">Pitcairn Island</option>
-                            <option value="Puerto Rico">Puerto Rico</option>
-                            <option value="Qatar">Qatar</option>
-                            <option value="Republic of Montenegro">Republic of Montenegro</option>
-                            <option value="Republic of Serbia">Republic of Serbia</option>
-                            <option value="Reunion">Reunion</option>
-                            <option value="Russia">Russia</option>
-                            <option value="Rwanda">Rwanda</option>
-                            <option value="St Barthelemy">St Barthelemy</option>
-                            <option value="St Eustatius">St Eustatius</option>
-                            <option value="St Helena">St Helena</option>
-                            <option value="St Kitts-Nevis">St Kitts-Nevis</option>
-                            <option value="St Lucia">St Lucia</option>
-                            <option value="St Maarten">St Maarten</option>
-                            <option value="St Pierre & Miquelon">St Pierre & Miquelon</option>
-                            <option value="St Vincent & Grenadines">St Vincent & Grenadines</option>
-                            <option value="Saipan">Saipan</option>
-                            <option value="Samoa">Samoa</option>
-                            <option value="Samoa American">Samoa American</option>
-                            <option value="San Marino">San Marino</option>
-                            <option value="Sao Tome & Principe">Sao Tome & Principe</option>
-                            <option value="Saudi Arabia">Saudi Arabia</option>
-                            <option value="Senegal">Senegal</option>
-                            <option value="Seychelles">Seychelles</option>
-                            <option value="Sierra Leone">Sierra Leone</option>
-                            <option value="Singapore">Singapore</option>
-                            <option value="Solomon Islands">Solomon Islands</option>
-                            <option value="Somalia">Somalia</option>
-                            <option value="South Africa">South Africa</option>
-                            <option value="Sri Lanka">Sri Lanka</option>
-                            <option value="Sudan">Sudan</option>
-                            <option value="Suriname">Suriname</option>
-                            <option value="Swaziland">Swaziland</option>
-                            <option value="Switzerland">Switzerland</option>
-                            <option value="Syria">Syria</option>
-                            <option value="Tahiti">Tahiti</option>
-                            <option value="Taiwan">Taiwan</option>
-                            <option value="Tajikistan">Tajikistan</option>
-                            <option value="Tanzania">Tanzania</option>
-                            <option value="Thailand">Thailand</option>
-                            <option value="Togo">Togo</option>
-                            <option value="Tokelau">Tokelau</option>
-                            <option value="Tonga">Tonga</option>
-                            <option value="Trinidad & Tobago">Trinidad & Tobago</option>
-                            <option value="Tunisia">Tunisia</option>
-                            <option value="Turkey">Turkey</option>
-                            <option value="Turkmenistan">Turkmenistan</option>
-                            <option value="Turks & Caicos Is">Turks & Caicos Is</option>
-                            <option value="Tuvalu">Tuvalu</option>
-                            <option value="Uganda">Uganda</option>
-                            <option value="United Kingdom">United Kingdom</option>
-                            <option value="Ukraine">Ukraine</option>
-                            <option value="United Arab Erimates">United Arab Emirates</option>
-                            <option value="Uraguay">Uruguay</option>
-                            <option value="Uzbekistan">Uzbekistan</option>
-                            <option value="Vanuatu">Vanuatu</option>
-                            <option value="Vatican City State">Vatican City State</option>
-                            <option value="Venezuela">Venezuela</option>
-                            <option value="Vietnam">Vietnam</option>
-                            <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
-                            <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
-                            <option value="Wake Island">Wake Island</option>
-                            <option value="Wallis & Futana Is">Wallis & Futana Is</option>
-                            <option value="Yemen">Yemen</option>
-                            <option value="Zaire">Zaire</option>
-                            <option value="Zambia">Zambia</option>
-                            <option value="Zimbabwe">Zimbabwe</option>
-                        </select>
+
+                    <select class="selectpicker show-menu-arrow form-control" id = 'dropdown-country'>
+                        <option disabled value>Select an option</option>
+                        <option value="blank">Prefer Not to Say</option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="European Union">European Union</option>
+                        <option value="Afganistan">Afghanistan</option>
+                        <option value="Albania">Albania</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="American Samoa">American Samoa</option>
+                        <option value="Andorra">Andorra</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Anguilla">Anguilla</option>
+                        <option value="Antigua & Barbuda">Antigua & Barbuda</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Armenia">Armenia</option>
+                        <option value="Aruba">Aruba</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Azerbaijan">Azerbaijan</option>
+                        <option value="Bahamas">Bahamas</option>
+                        <option value="Bahrain">Bahrain</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="Barbados">Barbados</option>
+                        <option value="Belarus">Belarus</option>
+                        <option value="Belize">Belize</option>
+                        <option value="Benin">Benin</option>
+                        <option value="Bermuda">Bermuda</option>
+                        <option value="Bhutan">Bhutan</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Bonaire">Bonaire</option>
+                        <option value="Bosnia & Herzegovina">Bosnia & Herzegovina</option>
+                        <option value="Botswana">Botswana</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
+                        <option value="Brunei">Brunei</option>
+                        <option value="Burkina Faso">Burkina Faso</option>
+                        <option value="Burundi">Burundi</option>
+                        <option value="Cambodia">Cambodia</option>
+                        <option value="Cameroon">Cameroon</option>
+                        <option value="Canary Islands">Canary Islands</option>
+                        <option value="Cape Verde">Cape Verde</option>
+                        <option value="Cayman Islands">Cayman Islands</option>
+                        <option value="Central African Republic">Central African Republic</option>
+                        <option value="Chad">Chad</option>
+                        <option value="Channel Islands">Channel Islands</option>
+                        <option value="Chile">Chile</option>
+                        <option value="China">China</option>
+                        <option value="Christmas Island">Christmas Island</option>
+                        <option value="Cocos Island">Cocos Island</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Comoros">Comoros</option>
+                        <option value="Congo">Congo</option>
+                        <option value="Cook Islands">Cook Islands</option>
+                        <option value="Costa Rica">Costa Rica</option>
+                        <option value="Cote DIvoire">Cote DIvoire</option>
+                        <option value="Cuba">Cuba</option>
+                        <option value="Curaco">Curacao</option>
+                        <option value="Djibouti">Djibouti</option>
+                        <option value="Dominica">Dominica</option>
+                        <option value="Dominican Republic">Dominican Republic</option>
+                        <option value="East Timor">East Timor</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="El Salvador">El Salvador</option>
+                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                        <option value="Eritrea">Eritrea</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Falkland Islands">Falkland Islands</option>
+                        <option value="Faroe Islands">Faroe Islands</option>
+                        <option value="Fiji">Fiji</option>
+                        <option value="French Guiana">French Guiana</option>
+                        <option value="French Polynesia">French Polynesia</option>
+                        <option value="French Southern Ter">French Southern Ter</option>
+                        <option value="Gabon">Gabon</option>
+                        <option value="Gambia">Gambia</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Gibraltar">Gibraltar</option>
+                        <option value="Great Britain">Great Britain</option>
+                        <option value="Greenland">Greenland</option>
+                        <option value="Grenada">Grenada</option>
+                        <option value="Guadeloupe">Guadeloupe</option>
+                        <option value="Guam">Guam</option>
+                        <option value="Guatemala">Guatemala</option>
+                        <option value="Guinea">Guinea</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Haiti">Haiti</option>
+                        <option value="Hawaii">Hawaii</option>
+                        <option value="Honduras">Honduras</option>
+                        <option value="Hong Kong">Hong Kong</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="India">India</option>
+                        <option value="Iran">Iran</option>
+                        <option value="Iraq">Iraq</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Isle of Man">Isle of Man</option>
+                        <option value="Israel">Israel</option>
+                        <option value="Jamaica">Jamaica</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Kazakhstan">Kazakhstan</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Kiribati">Kiribati</option>
+                        <option value="Korea North">Korea North</option>
+                        <option value="Korea Sout">Korea South</option>
+                        <option value="Kuwait">Kuwait</option>
+                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                        <option value="Laos">Laos</option>
+                        <option value="Lebanon">Lebanon</option>
+                        <option value="Lesotho">Lesotho</option>
+                        <option value="Liberia">Liberia</option>
+                        <option value="Libya">Libya</option>
+                        <option value="Liechtenstein">Liechtenstein</option>
+                        <option value="Macau">Macau</option>
+                        <option value="Macedonia">Macedonia</option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Malawi">Malawi</option>
+                        <option value="Maldives">Maldives</option>
+                        <option value="Mali">Mali</option>
+                        <option value="Marshall Islands">Marshall Islands</option>
+                        <option value="Martinique">Martinique</option>
+                        <option value="Mauritania">Mauritania</option>
+                        <option value="Mauritius">Mauritius</option>
+                        <option value="Mayotte">Mayotte</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Midway Islands">Midway Islands</option>
+                        <option value="Moldova">Moldova</option>
+                        <option value="Monaco">Monaco</option>
+                        <option value="Mongolia">Mongolia</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Mozambique">Mozambique</option>
+                        <option value="Myanmar">Myanmar</option>
+                        <option value="Nambia">Nambia</option>
+                        <option value="Nauru">Nauru</option>
+                        <option value="Nepal">Nepal</option>
+                        <option value="Netherland Antilles">Netherland Antilles</option>
+                        <option value="Nevis">Nevis</option>
+                        <option value="New Caledonia">New Caledonia</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="Nicaragua">Nicaragua</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Niue">Niue</option>
+                        <option value="Norfolk Island">Norfolk Island</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Oman">Oman</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="Palau Island">Palau Island</option>
+                        <option value="Palestine">Palestine</option>
+                        <option value="Panama">Panama</option>
+                        <option value="Papua New Guinea">Papua New Guinea</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Phillipines">Philippines</option>
+                        <option value="Pitcairn Island">Pitcairn Island</option>
+                        <option value="Puerto Rico">Puerto Rico</option>
+                        <option value="Qatar">Qatar</option>
+                        <option value="Republic of Montenegro">Republic of Montenegro</option>
+                        <option value="Republic of Serbia">Republic of Serbia</option>
+                        <option value="Reunion">Reunion</option>
+                        <option value="Russia">Russia</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="St Barthelemy">St Barthelemy</option>
+                        <option value="St Eustatius">St Eustatius</option>
+                        <option value="St Helena">St Helena</option>
+                        <option value="St Kitts-Nevis">St Kitts-Nevis</option>
+                        <option value="St Lucia">St Lucia</option>
+                        <option value="St Maarten">St Maarten</option>
+                        <option value="St Pierre & Miquelon">St Pierre & Miquelon</option>
+                        <option value="St Vincent & Grenadines">St Vincent & Grenadines</option>
+                        <option value="Saipan">Saipan</option>
+                        <option value="Samoa">Samoa</option>
+                        <option value="Samoa American">Samoa American</option>
+                        <option value="San Marino">San Marino</option>
+                        <option value="Sao Tome & Principe">Sao Tome & Principe</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Seychelles">Seychelles</option>
+                        <option value="Sierra Leone">Sierra Leone</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Solomon Islands">Solomon Islands</option>
+                        <option value="Somalia">Somalia</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Sudan">Sudan</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Swaziland">Swaziland</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Syria">Syria</option>
+                        <option value="Tahiti">Tahiti</option>
+                        <option value="Taiwan">Taiwan</option>
+                        <option value="Tajikistan">Tajikistan</option>
+                        <option value="Tanzania">Tanzania</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Togo">Togo</option>
+                        <option value="Tokelau">Tokelau</option>
+                        <option value="Tonga">Tonga</option>
+                        <option value="Trinidad & Tobago">Trinidad & Tobago</option>
+                        <option value="Tunisia">Tunisia</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Turkmenistan">Turkmenistan</option>
+                        <option value="Turks & Caicos Is">Turks & Caicos Is</option>
+                        <option value="Tuvalu">Tuvalu</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="United Arab Erimates">United Arab Emirates</option>
+                        <option value="Uraguay">Uruguay</option>
+                        <option value="Uzbekistan">Uzbekistan</option>
+                        <option value="Vanuatu">Vanuatu</option>
+                        <option value="Vatican City State">Vatican City State</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
+                        <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
+                        <option value="Wake Island">Wake Island</option>
+                        <option value="Wallis & Futana Is">Wallis & Futana Is</option>
+                        <option value="Yemen">Yemen</option>
+                        <option value="Zaire">Zaire</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
+                    </select>
                     </div>
+                    <div id = 'rand-spacing'></div>
+
+                    
 
                     <!-- Simple Button to submit the calculator's results -->
                     <!-- There's a JavaScript function that activates when this button is clicked -->
                     <button id = 'submitButton'>Calculate my Foodprint!</button>
                 </div>
 
-                <!-- The user can only go backwards on Step 4 of 4 -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            </div>
-            
-            <!-- NEW PAGE ~~ Final Results page that gives the user's carbon, nitrogen, and water footprints -->
-            <div class = "mySlides fade">
-                <div class="slide-container" style = "width: 100%;">
-                    <!-- Subheading with page description and title -->
-                    <h4 class = 'final-title' id='step-title'>Your Diet's Annual Environmental Impact<sup style = 'font-size: 20px;'>1</sup></h4>
-                    <!--<p id = 'title-subheading'>What you choose to eat has arguably the largest impact on your individual environmental footprint! </p>-->
-                    
-                    <!-- Start of table displaying the user's individual environmental footprint report -->
-                    <table class = 'table'>
-                        <tr class = 'row'>
-                            <th>
-                                <center><p class = "footprint" id = "carbonKG" style = 'padding-top: 5px;'>0 kg</p></center>
-                                <p class = 'footprint_text'>Carbon</p>
-                            </th>    
-                            <th>
-                                <center><p class = "footprint" id = "nitrogenG" style = 'padding-top: 5px;'>0 g</p></center>
-                                <p class = 'footprint_text'>Nitrogen</p>
-                            </th>
-                            <th>
-                                <center><p class = "footprint" id = "waterL" style = 'padding-top: 5px;'>0 L</p></center>
-                                <p class = 'footprint_text'>Water</p>
-                            </th>
-                        </tr>
-                    </table>
+                <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a> -->
+        </div>
+        
+        <!-- NEW PAGE ~~ Final Results page that gives the user's carbon, nitrogen, and water footprints -->
+        <div class = "mySlides fader">
+            <div class="slide-container" style = "width: 100%;">
+                <!-- Subheading with page description and title -->
+                <h4 id='step-title'>Your Diet's Annual Environmental Impact<sup style = 'font-size: 20px;'>1</sup></h4>
+                <!--<p id = 'title-subheading'>What you choose to eat has arguably the largest impact on your individual environmental footprint! </p>-->
+                
+                <!-- Start of table displaying the user's individual environmental footprint report -->
+                <table class = 'table'>
+                    <tr class = 'row'>
+                        <td>
+                            <center><p class = "footprint" id = "carbonKG">0 kg</p></center>
+                            <p class = 'footprint_text'>Carbon</p>
+                        </th>    
+                        <td>
+                            <center><p class = "footprint" id = "nitrogenG">0 g</p></center>
+                            <p class = 'footprint_text'>Nitrogen</p>
+                        </th>
+                        <td>
+                            <center><p class = "footprint" id = "waterL">0 L</p></center>
+                            <p class = 'footprint_text'>Water</p>
+                        </th>
+                    </tr>
+                </table>
 
-                    <!-- References for the Project -->
-                    <div id = 'text-reference-container' >
-                        <p class = 'footprinttext_description' id = "environ-average-description">
-                            0kg is below the US average dietary carbon footprint of 1750kg and below the 680kg upper limit of a sustainable diet.
-                        </p>
+                <!-- References for the Project -->
+                <div id = 'text-reference-container' >
+                    <p class = 'footprinttext_description' id = "environ-average-description">
+                        0kg is below the US average dietary carbon footprint of 1750kg and below the 680kg upper limit of a sustainable diet.
+                    </p>
 
-                        <p class = 'footprinttext_description' id = "environment-description">
-                            For your reference, 0kg of Carbon is equivalent to 0 gallons of gasoline burned and 0 cubic feet of ice melted every year.
-                        </p>
+                    <p class = 'footprinttext_description' id = "environment-description">
+                        For your reference, 0kg of Carbon is equivalent to 0 gallons of gasoline burned and 0 cubic feet of ice melted every year.
+                    </p>
 
-                        <p class = 'footprinttext_description'>
-                            Looking for ways to improve your diet's sustainability?
-                            Meat and dairy production account for three-fourths of all carbon emissions from an average American diet
-                            and are also the two highest sources of water usage in food production.<sup>6,1</sup>
-                            For a seven day meal plan with recipes and tons of other good stuff, check out <a href = 'https://www.hsph.harvard.edu/nutritionsource/sustainability/plate-and-planet/' target="_blank">these recommendations</a>
-                            from the Harvard T.H. Chan School of Public Health on consuming a healthy and Earth-friendly diet.
-                        </p>
+                    <p class = 'footprinttext_description'>
+                        Looking for ways to improve your diet's sustainability?
+                        Meat and dairy production account for three-fourths of all carbon emissions from an average American diet
+                        and are also the two highest sources of water usage in food production.<sup>6,1</sup>
+                        For a seven day meal plan with recipes and tons of other good stuff, check out <a href = 'https://www.hsph.harvard.edu/nutritionsource/sustainability/plate-and-planet/' target="_blank">these recommendations</a>
+                        from the Harvard T.H. Chan School of Public Health on consuming a healthy and Earth-friendly diet.
+                    </p>
 
-                        <button id = 'referencesButton'>Click here for References</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NEW PAGE ~~ Just for References -->
-            <div class = "mySlides fade">
-                <div class="slide-container" style = "width: 100%;">
-                    <!-- Subheading with page description and title -->
-                    <h4 class = 'final-title' id='step-title' style = "padding: 10px;">References</h4>
-                    <!-- References for the Project -->
-                    <div id = 'reference-container' >
-                        <p id = 'references'>1. Leach, Allison M., Kyle A. Emery, Jessica Gephart, Kyle F. Davis, Jan Willem Erisman, Adrian Leip, Michael L. Pace, et al. “Environmental Impact Food Labels Combining Carbon, Nitrogen, and Water Footprints.” <i>Food Policy</i> 61 (2016): 213–23. https://doi.org/10.1016/j.foodpol.2016.03.006. </p>
-                        <p id = 'references'>2. Rose, Donald, Martin C Heller, Amelia M Willits-Smith, and Robert J Meyer. “Carbon Footprint of Self-Selected US Diets: Nutritional, Demographic, and Behavioral Correlates.” The American Journal of Clinical Nutrition 109, no. 3 (2019): 526–34. https://doi.org/10.1093/ajcn/nqy327. </p>
-                        <p id = 'references'>3. “EAT Lancet Commission Summary.” EAT Lancet Commission, n.d. https://eatforum.org/content/uploads/2019/07/EAT-Lancet_Commission_Summary_Report.pdf. </p>
-                        <p id = 'references'>4. Rohrer, Jürg. “What Is a Carbon Footprint - Definition of Carbon Footprint.” Time for Change. https://timeforchange.org/what-is-a-carbon-footprint-definition/. </p>
-                        <p id = 'references'>5. Shapiro, Ari. “With An Eye Toward Lower Emissions, Clean Air Travel Gets Off The Ground.” NPR. NPR, July 29, 2019. https://www.npr.org/2019/07/29/746275123/with-an-eye-toward-lower-emissions-clean-air-travel-gets-off-the-ground.</p>
-                        <p id = 'references'>6. “Carbon Footprint Factsheet.” Carbon Footprint Factsheet | Center for Sustainable Systems. http://css.umich.edu/factsheets/carbon-footprint-factsheet.</p>
-                        <p id = 'references'>7. “Saving Water in the Shower and Bathtub.” Water Footprint Calculator, December 7, 2018. https://www.watercalculator.org/save-water/shower-bath/.</p>
-                    </div>
-
-                    <button id = 'referencesButtonBack'>Back to results</button>
+                    <button id = 'referencesButton'>Click here for References</button>
                 </div>
             </div>
         </div>
-        <br>
+
+        <!-- NEW PAGE ~~ Just for References -->
+        <div class = "mySlides fader">
+            <div class="slide-container" style = "width: 100%;">
+                <!-- Subheading with page description and title -->
+                <h4 id='step-title'>References</h4>
+                <!-- References for the Project -->
+                <div id = 'reference-container' >
+                    <p id = 'references'>1. Leach, Allison M., Kyle A. Emery, Jessica Gephart, Kyle F. Davis, Jan Willem Erisman, Adrian Leip, Michael L. Pace, et al. “Environmental Impact Food Labels Combining Carbon, Nitrogen, and Water Footprints.” <i>Food Policy</i> 61 (2016): 213–23. https://doi.org/10.1016/j.foodpol.2016.03.006. </p>
+                    <p id = 'references'>2. Rose, Donald, Martin C Heller, Amelia M Willits-Smith, and Robert J Meyer. “Carbon Footprint of Self-Selected US Diets: Nutritional, Demographic, and Behavioral Correlates.” The American Journal of Clinical Nutrition 109, no. 3 (2019): 526–34. https://doi.org/10.1093/ajcn/nqy327. </p>
+                    <p id = 'references'>3. “EAT Lancet Commission Summary.” EAT Lancet Commission, n.d. https://eatforum.org/content/uploads/2019/07/EAT-Lancet_Commission_Summary_Report.pdf. </p>
+                    <p id = 'references'>4. Rohrer, Jürg. “What Is a Carbon Footprint - Definition of Carbon Footprint.” Time for Change. https://timeforchange.org/what-is-a-carbon-footprint-definition/. </p>
+                    <p id = 'references'>5. Shapiro, Ari. “With An Eye Toward Lower Emissions, Clean Air Travel Gets Off The Ground.” NPR. NPR, July 29, 2019. https://www.npr.org/2019/07/29/746275123/with-an-eye-toward-lower-emissions-clean-air-travel-gets-off-the-ground.</p>
+                    <p id = 'references'>6. “Carbon Footprint Factsheet.” Carbon Footprint Factsheet | Center for Sustainable Systems. http://css.umich.edu/factsheets/carbon-footprint-factsheet.</p>
+                    <p id = 'references'>7. “Saving Water in the Shower and Bathtub.” Water Footprint Calculator, December 7, 2018. https://www.watercalculator.org/save-water/shower-bath/.</p>
+                </div>
+
+                <button id = 'referencesButtonBack'>Back to results</button>
+            </div>
+        </div>
+    </div>
     </center>
     </div>
     
@@ -635,7 +1199,6 @@
             <span class="dot" onclick="currentSlide(1)"></span> 
             <span class="dot" onclick="currentSlide(2)"></span> 
             <span class="dot" onclick="currentSlide(3)"></span> 
-            <span class="dot" onclick="currentSlide(4)"></span> 
         </div>
     </div>
 

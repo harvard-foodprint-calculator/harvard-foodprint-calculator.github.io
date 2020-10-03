@@ -83,6 +83,10 @@ hr{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+#step-title{
+  margin-bottom: 1.0vh;
+}
+
 #titlesubheading-container{
   width: 55%;
 }
@@ -94,7 +98,7 @@ hr{
 }
 
 .slide-container{
-  width: 80%;
+  width: 85%;
 }
 
 .ui-slider, .ui-slider .slider-range-inverse, .ui-slider .ui-slider-range {
@@ -102,6 +106,8 @@ hr{
   border-radius: 10px;
   border-width: 0;
 }
+
+/* > FONTS SIZES AND HEADINGS < */
 
 h1 {
   text-align: center;
@@ -116,7 +122,7 @@ h2{
   color: #444;
   font-family: OpenSans-Light;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 17px;
   margin-top: 0.9vh;
   text-transform: uppercase;
 }
@@ -144,9 +150,46 @@ h4 {
   font-family: OpenSans-Bold;
 }
 
+#title-subheading {
+  text-align: center;
+  color: #444;
+  padding-top: 0vw;
+  font-family: 'OpenSans-Light';
+  font-size: 15px;
+}
+
+
+#serving-size{
+  font-family: OpenSans-Light;
+  font-size: 12px;
+  color: rgb(124, 124, 124);
+}
+
+#table-heading-font{
+  font-size: 13px;
+}
+
+/* > SPACING SECTIONS < */
+
+#post-subtitle-spacing{
+  padding-bottom: 1.0vh;
+}
+
+#post-subtitle-spacing-2{
+  padding-bottom: 3px;
+}
+
+#post-subtitle-spacing-3{
+  padding-bottom: 2.0vh;
+}
+
+#rand-spacing{
+  padding-bottom: 0.8vh;
+}
+
 #slider-container {
   width: 80%;
-  height: 700px;
+  height: 800px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -162,28 +205,274 @@ h4 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-
-#title-subheading {
+#submitButton{
+  margin-top: 4.5vh;
+  border-radius: 6px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
   text-align: center;
+  text-decoration: none;
+  font-size: 19px;
+  padding: 10px 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
+}
+
+.selectpicker{
+  width: 50%;
+  height: 35px;
+}
+
+/* > CAROUSEL SECTION > */
+/* From: https://www.w3schools.com/howto/howto_js_slideshow.asp */
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Fading animation */
+.fader {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+
+/* > BUTTON MULTIPLE SELECTION < */
+.btn{
+  width: 4vw;
+  max-width: 60px;
+  height: 43px;
+  border-radius: 0 !important; 
+}
+
+.col-headers{
+  width: 4vw;
+  max-width: 60px;
+}
+
+div.row{
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary{
+  background-color: white;
+  border: white;
+}
+
+.btn-primary:hover {
+  background-color: #52bebe;
+  border-color: #8ad3d3
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 .2rem rgba(91, 194, 194, 0.5)
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: #7cc;
+  border-color: #b0c9c9
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show>.btn-primary.dropdown-toggle {
+  background-color: #9cdada;
+  border-color: #2e7c7c
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .2rem rgba(91, 194, 194, 0.5)
+}
+
+.btn-outline-primary {
+  color: #7cc;
+  background-color: transparent;
+  background-image: none;
+  border-color: #7cc
+}
+
+.btn-outline-primary:hover {
+  color: #222;
+  background-color: #8ad3d3;
+  border-color: #7cc
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 .2rem rgba(119, 204, 204, 0.5)
+}
+
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+  color: #7cc;
+  background-color: transparent
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show>.btn-outline-primary.dropdown-toggle {
+  color: #212529;
+  background-color: #8ad3d3;
+  border-color: #7cc
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show>.btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .2rem rgba(119, 204, 204, 0.5)
+}
+
+/* >  NEXT & PREVIOUS BUTTONS < */
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: #2c3e50;
+  font-weight: bold;
+  font-size: 22px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+}
+
+/* > DOTS SECTION < */
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  margin-top: 30px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+#dots-container {
+  margin-bottom: 32px;
+}
+
+
+/* > FINAL RESULTS PAGE WITH ENVIRONMENTAL FOOTPRINT OUTPUT > */
+.footprint_container{
+  width: 100%;
+  height: 60vh;
+  padding-right: 9.73vw;
+  padding-left: 9.73vw;
+}
+
+.text_container{
+  width: 100%;
+  height: 100%;
+  float: left;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  padding-top: 75px;
+}
+
+/* Centering the footprint values in the middle */
+tr.row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footprint{
+  padding-top: 20px;
+  font-size: 35px;
   color: #444;
-  padding-bottom: 1.0vh;
-  padding-top: 0vw;
-  font-family: 'OpenSans-Light';
+  font-family: OpenSans-Light;
+  text-align: center;
+}
+
+.footprint_text{
+  font-size: 18px;
+  color: #444;
+  padding-bottom: 25px;
+  font-family: OpenSans-Light;
+  margin: auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.table {
+  padding: 0.2vh;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  display: table;
+  width: 65%;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.footprinttext_description {
+  text-align: justify;
   font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #444;
+  font-family: OpenSans-Light;
+  font-size: 16.5px;
+  line-height: 1.5;
+  font-weight: bold;
 }
 
-#post-subtitle-spacing{
-  padding-bottom: 1.0vh;
-}
-
-#post-subtitle-spacing-2{
-  padding-bottom: 3px;
-}
-
-#post-subtitle-spacing-3{
-  padding-bottom: 2.0vh;
-}
-
+/* > REFERENCES SECTION < */
 #references-title{
   color: rgb(34, 34, 34);
   padding-left: 10px;
@@ -205,7 +494,7 @@ h4 {
 }
 
 #referencesButtonBack{
-  margin-top: 60px;;
+  margin-top: 4.5vh;
   border-radius: 6px;
   background-color: #2c3e50;
   color: white;
@@ -219,7 +508,7 @@ h4 {
 }
 
 #referencesButton{
-  margin-top: 60px;;
+  margin-top: 4.5vh;
   border-radius: 6px;
   background-color: #2c3e50;
   color: white;
@@ -240,354 +529,13 @@ h4 {
   width: 80%;
 }
 
-#serving-size{
-  font-family: OpenSans-Light;
-  font-size: 12px;
-  color: rgb(124, 124, 124);
-}
 
-#dots-container {
-  margin-bottom: 32px;
-}
+/*  
+---
+> MOBILE RESPONSIVENESS SECTION <
+---
+*/
 
-#submitButton{
-  margin-top: 20px;
-  border-radius: 6px;
-  background-color: #2c3e50;
-  color: white;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  font-size: 19px;
-  padding: 10px 50px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
-}
-
-/* > CAROUSEL SECTION > */
-/* From: https://www.w3schools.com/howto/howto_js_slideshow.asp */
-
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: #2c3e50;
-  font-weight: bold;
-  font-size: 22px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.prev {
-  left: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.6);
-  color: white;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  margin-top: 30px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* > SLIDER DESIGN > */
-
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-.range-slider {
-  margin: 1.1vh 0 0px 0%;
-  margin-bottom: 15px;
-}
-
-.range-slider {
-  width: 60%;
-}
-
-.range-slider__range {
-  -webkit-appearance: none;
-  width: calc(100% - (73px));
-  height: 7px;
-  border-radius: 5px;
-  background: #d7dcdf;
-  outline: none;
-  padding: 0;
-  margin: 0;
-}
-.range-slider__range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-          appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #2c3e50;
-  cursor: pointer;
-  transition: background 0.15s ease-in-out;
-}
-.range-slider__range::-webkit-slider-thumb:hover {
-  background: #1abc9c;
-}
-.range-slider__range:active::-webkit-slider-thumb {
-  background: #1abc9c;
-}
-.range-slider__range::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  border: 0;
-  border-radius: 50%;
-  background: #2c3e50;
-  cursor: pointer;
-  transition: background 0.15s ease-in-out;
-}
-.range-slider__range::-moz-range-thumb:hover {
-  background: #1abc9c;
-}
-.range-slider__range:active::-moz-range-thumb {
-  background: #1abc9c;
-}
-.range-slider__range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1abc9c;
-}
-
-.range-slider__value {
-  display: inline-block;
-  position: relative;
-  width: 60px;
-  color: #fff;
-  line-height: 20px;
-  text-align: center;
-  border-radius: 3px;
-  background: #2c3e50;
-  padding: 5px 10px;
-  margin-left: 8px;
-}
-.range-slider__value:after {
-  position: absolute;
-  top: 8px;
-  left: -7px;
-  width: 0;
-  height: 0;
-  border-top: 7px solid transparent;
-  border-right: 7px solid #2c3e50;
-  border-bottom: 7px solid transparent;
-  content: "";
-}
-
-::-moz-range-track {
-  background: #d7dcdf;
-  border: 0;
-}
-
-input::-moz-focus-inner,
-input::-moz-focus-outer {
-  border: 0;
-}
-
-/* RADIO BUTTONS ON PAGE FOUR */
-/* https://codepen.io/SitePoint/pen/qhCba */
-
-.radio-toolbar {
-  margin: 4px;
-  padding-bottom: 18px;
-}
-
-#padding2{
-  padding-bottom: 2px;
-}
-
-.radio-toolbar input[type="radio"] {
-  border: 0; 
-  clip: rect(0 0 0 0); 
-  height: 1px; margin: -1px; 
-  overflow: hidden; 
-  padding: 0; 
-  position: absolute; 
-  width: 1px;
-}
-
-/* the basic, unchecked style */
-[type="radio"] + span:before {
-  content: '';
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.25em;
-  border-radius: 1em;
-  border: 0.125em solid #fff;
-  box-shadow: 0 0 0 0.15em #2c3e50;
-  margin-right: 0.5em;
-  margin-left: 2em;
-  margin-top: 7px;
-  transition: 0.5s ease all;
-}
-
-/* the checked style using the :checked pseudo class */
-[type="radio"]:checked + span:before {
-  background: #2c3e50;
-  box-shadow: 0 0 0 0.15em #2c3e50;
-}
-
-[type="radio"]:focus + span:after {
-  font-size: 1.5em;
-  line-height: 1;
-  vertical-align: -0.125em;
-}
-
-span{
-  color: #444;
-  font-family: OpenSans-Light;
-}
-
-/* > FINAL RESULTS PAGE WITH ENVIRONMENTAL FOOTPRINT OUTPUT > */
-
-.footprint_container{
-  width: 100%;
-  height: 60vh;
-  padding-right: 9.73vw;
-  padding-left: 9.73vw;
-}
-
-.text_container{
-  width: 100%;
-  height: 100%;
-  float: left;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  padding-top: 75px;
-}
-
-.footprint{
-  font-size: 35px;
-  color: #444;
-  font-family: OpenSans-Light;
-  text-align: center;
-}
-
-.footprint_text{
-  font-size: 18px;
-  color: #444;
-  padding-bottom: 25px;
-  font-family: OpenSans-Light;
-  margin: auto;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-#footprint_image{
-  width: 100%;
-  margin: auto;
-  text-align: center;
-}
-
-.table {
-  padding: 0.2vh;
-  margin-top: 30px;
-  margin-bottom: 0px;
-  display: table;
-  width: 60%;
-  table-layout: fixed;
-}
-
-.column1{
-  float: left;
-  width: 41%;
-}
-
-.column2{
-  float: left;
-  width: 59%;
-  vertical-align: middle;
-  padding-right: 110px;
-  padding-left: 20px;
-}
-
-td {
-  vertical-align: middle;
-}
-
-.footprinttext_description {
-  text-align: justify;
-  font-size: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: #444;
-  font-family: OpenSans-Light;
-  font-size: 16.5px;
-  line-height: 1.5;
-  font-weight: bold;
-}
-
-/* MOBILE RESPONSIVENESS */
 @media screen and (max-width: 480px) and (min-width: 0px) {
   .center {
       color: white;
@@ -623,10 +571,16 @@ td {
 
   h2{
     font-size: 14px;
+    margin: 0px;
   }
 
   #food{
     margin-top: 16px;
+  }
+
+  div.col{
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   h3{
@@ -647,18 +601,39 @@ td {
     font-size: 25px;
   }
 
-  .radio-toolbar {
-    margin: 1px;
-    padding-bottom: 11px;
+  #food{
+    font-size: 11px;
   }
 
-  span{
-    font-size: 12px;
+  #step-title{
+    padding: 15px 20px 5px;
+  }
+
+  #title-subheading{
+    padding: 15px 20px 0px;
+  }
+
+  #serving-size{
+    font-size: 0px;
   }
 
   #slider-container {
-    padding: 25px 25px 15px 25px;
+    width: 90%;
+    padding: 5px 10px 5px 10px;
     height: 750px;
+  }
+
+  #post-subtitle-spacing-3{
+    padding-bottom: 1.0vh;
+  }
+
+  #rand-spacing{
+    padding-bottom: 1.8vh;
+  }
+
+  div.row{
+    width: 100%;
+    padding-bottom: 9px;
   }
 
   #dots-container {
@@ -678,14 +653,32 @@ td {
 
   .footprint_text{
     font-size: 14px;
+    padding-bottom: 18px;
   }
 
   .footprint{
     font-size: 22px;
   }
 
+  .selectpicker{
+    width: 65%;
+  }
+
+  .btn{
+    width: 7vw;
+    height: 43px;
+  }
+
+  .col-headers{
+    width: 7vw;
+  }
+
+  #table-heading-font{
+    font-size: 10.5px;
+  }
+
   #submitButton{
-    margin-top: 15px;
+    margin-top: 30px;
     font-size: 15px;
     padding: 10px 30px;
   }
@@ -702,17 +695,14 @@ td {
   }
 
   .footprinttext_description{
-    font-size: 10px;
+    font-size: 12px;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 
   .table {
     padding: 0vh;
     width: 100%;
-  }
-
-  .column2{
-    padding-left: 5px;
-    padding-right: 0px;
   }
 
   #reference-container{
@@ -734,7 +724,7 @@ td {
   }
 
   #referencesButtonBack{
-    margin-top: 30px;
+    margin-top: 22px;
     border-radius: 6px;
     background-color: #2c3e50;
     color: white;
